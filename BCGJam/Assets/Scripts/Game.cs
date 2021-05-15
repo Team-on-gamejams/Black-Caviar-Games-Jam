@@ -13,6 +13,7 @@ public class Game : MonoBehaviour {
 	[SerializeField] int pointToWin = 8;
 	[SerializeField] int pointToLose = 8;
 	[SerializeField] int pointToCombo = 4;
+	[SerializeField] int loseGrowPerTurn = 1;
 	int statLose;
 	int statWin;
 	int statCombo;
@@ -23,8 +24,8 @@ public class Game : MonoBehaviour {
 	[SerializeField] ParticleSystem[] particlesWhenComboUsed;
 
 	[Header("Refs"), Space]
-	[SerializeField] CanvasGroup cgBeforeSpin;
-	[SerializeField] CanvasGroup cgAfterSpin;
+	[SerializeField] Button buttonSpin;
+	[SerializeField] Button[] buttonsSelectGroup;
 	[Space]
 	[SerializeField] Button useComboButton;
 	[Space]
@@ -54,14 +55,13 @@ public class Game : MonoBehaviour {
 		progressBarLose.Init();
 		progressBarCombo.Init();
 
-		cgBeforeSpin.interactable = cgBeforeSpin.blocksRaycasts = true;
-		cgBeforeSpin.alpha = 1.0f;
+		buttonSpin.interactable = true;
 
+		foreach (var b in buttonsSelectGroup) {
+			b.interactable = false;
+		}
 
-		cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = false;
-		cgAfterSpin.alpha = 0.0f;
-
-		useComboButton.interactable = false;
+		useComboButton.image.raycastTarget = useComboButton.interactable = false;
 
 		statLose = 0;
 		statWin = 0;
@@ -82,26 +82,62 @@ public class Game : MonoBehaviour {
 		//TODO: 
 		Debug.Log("Calc sector data");
 
-		statLose += 2;
-		++statWin;
+		statLose += 3;
+		--statWin;
 		statCombo += 2;
 	}
 
 	void UseGroup2() {
 		circle.AnimateArrowsGroup2();
-		
+
 		//TODO: 
 		Debug.Log("Calc sector data");
 
-		statLose -= 2;
-		--statWin;
-		++statCombo;
+		--statLose;
+		statWin += 3;
 	}
 
 	#region Button Callbacks
+	public void OnMouseOverGroup1() {
+		progressBarLose.UpdateHalfFillValue(statLose + 3 + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin - 1);
+		progressBarCombo.UpdateHalfFillValue(statCombo + 2);
+	}
+
+	public void OnMouseOverGroup2() {
+		progressBarLose.UpdateHalfFillValue(statLose - 1 + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + 3);
+		progressBarCombo.UpdateHalfFillValue(statCombo);
+	}
+
+	public void OnMouseOverGroupBoth() {
+		progressBarLose.UpdateHalfFillValue(statLose + 3 - 1 + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin - 1 + 3);
+		progressBarCombo.UpdateHalfFillValue(statCombo + 2);
+	}
+
+	public void OnMouseExitGroup1() {
+		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarWin.ClearHalfFillValue();
+		progressBarCombo.ClearHalfFillValue();
+	}
+
+	public void OnMouseExitGroup2() {
+		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarWin.ClearHalfFillValue();
+		progressBarCombo.ClearHalfFillValue();
+	}
+
+	public void OnMouseExitGroupBoth() {
+		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarWin.ClearHalfFillValue();
+		progressBarCombo.ClearHalfFillValue();
+	}
+	#endregion
+
+	#region Button Callbacks
 	public void OnClickSpin() {
-		cgBeforeSpin.interactable = cgBeforeSpin.blocksRaycasts = false;
-		LeanTweenEx.ChangeAlpha(cgBeforeSpin, 0.0f, 0.2f);
+		buttonSpin.interactable = false;
 
 		filledBars = 0;
 
@@ -111,26 +147,26 @@ public class Game : MonoBehaviour {
 	public void OnClickSelectGroup1() {
 		OnSelectAnyGroup();
 		UseGroup1();
-		CheckConditions();
+		AfterUseGroup();
 	}
 
 	public void OnClickSelectGroup2() {
 		OnSelectAnyGroup();
 		UseGroup2();
-		CheckConditions();
+		AfterUseGroup();
 	}
 
 	public void OnClickComboBar() {
-		useComboButton.interactable = false;
+		useComboButton.image.raycastTarget = useComboButton.interactable = false;
 		particlesWhenComboFull.Stop();
 
 		if (isGroupSelectionShowed) {
-			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
-
 			OnSelectAnyGroup();
 			UseGroup1();
 			UseGroup2();
-			CheckConditions();
+			AfterUseGroup();
+
+			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
 		}
 		else {
 			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
@@ -142,8 +178,11 @@ public class Game : MonoBehaviour {
 		}
 	}
 
-	void CheckConditions() {
-		if (statWin > pointToWin) {
+	void AfterUseGroup() {
+		foreach (var part in particlesWhenComboUsed)
+			part.Stop();
+
+		if (statWin >= pointToWin) {
 			statWin = pointToWin;
 			//TODO: 
 			Debug.Log("Win");
@@ -152,7 +191,9 @@ public class Game : MonoBehaviour {
 			statWin = 0;
 		}
 
-		if (statLose > pointToLose) {
+		statLose += loseGrowPerTurn;
+
+		if (statLose >= pointToLose) {
 			statLose = pointToLose;
 			//TODO: 
 			Debug.Log("Lose");
@@ -177,9 +218,15 @@ public class Game : MonoBehaviour {
 	}
 
 	void OnSelectAnyGroup() {
-		cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = false;
-		LeanTweenEx.ChangeAlpha(cgAfterSpin, 0.0f, 0.2f);
+		foreach (var b in buttonsSelectGroup) {
+			b.interactable = false;
+		}
+
 		isGroupSelectionShowed = false;
+
+		progressBarCombo.ClearHalfFillValue();
+		progressBarLose.ClearHalfFillValue();
+		progressBarWin.ClearHalfFillValue();
 	}
 	#endregion
 
@@ -189,29 +236,30 @@ public class Game : MonoBehaviour {
 		if (isActivateComboBar) {
 			isActivateComboBar = false;
 
-			foreach (var part in particlesWhenComboUsed)
-				part.Stop();
-
 			OnSelectAnyGroup();
 			UseGroup1();
 			UseGroup2();
-			CheckConditions();
+			AfterUseGroup();
+
+			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
 		}
 		else {
-			cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = true;
-			LeanTweenEx.ChangeAlpha(cgAfterSpin, 1.0f, 0.2f);
+			foreach (var b in buttonsSelectGroup) {
+				b.interactable = true;
+			}
+
 			isGroupSelectionShowed = true;
+			progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
 		}
 	}
 
 	void OnAllEffectAnimationDone() {
-		cgBeforeSpin.interactable = cgBeforeSpin.blocksRaycasts = true;
-		LeanTweenEx.ChangeAlpha(cgBeforeSpin, 1.0f, 0.2f);
+		buttonSpin.interactable = true;
 	}
 
 	void OnComboBarFill() {
 		if (statCombo == pointToCombo) {
-			useComboButton.interactable = true;
+			useComboButton.image.raycastTarget = useComboButton.interactable = true;
 
 			particlesWhenComboFull.Play();
 		}

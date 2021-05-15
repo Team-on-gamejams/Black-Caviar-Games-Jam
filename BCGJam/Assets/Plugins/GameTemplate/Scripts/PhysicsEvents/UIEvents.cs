@@ -41,6 +41,8 @@ public class UIEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
+		if (!selectable.interactable)
+			return;
 		Click();
 	}
 
@@ -50,6 +52,8 @@ public class UIEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 
 	public void OnPointerEnter(PointerEventData eventData) {
+		if (!selectable.interactable)
+			return;
 		Enter();
 	}
 
@@ -59,6 +63,8 @@ public class UIEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
+		if (!selectable.interactable)
+			return;
 		Exit();
 	}
 
@@ -72,8 +78,6 @@ public class UIEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 
 	void Enter() {
-		++enterCount;
-		if (enterCount == 1)
 			onEnter?.Invoke();
 	}
 
@@ -82,11 +86,6 @@ public class UIEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 
 	void Exit() {
-		if (enterCount <= 0)
-			return;
-
-		--enterCount;
-		if (enterCount == 0)
 			onExit?.Invoke();
 	}
 

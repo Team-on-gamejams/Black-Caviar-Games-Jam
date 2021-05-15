@@ -11,13 +11,16 @@ using Random = UnityEngine.Random;
 public class ProgressBar : MonoBehaviour {
 	public Action onValueUpdated;
 
-	int currValue;
-
 	[Header("Visual"), Space]
 	[SerializeField] float fillTime = 0.1f;
+	[SerializeField] Vector2 changeTextOffset;
 
 	[Header("Refs"), Space]
 	[SerializeField] ProgressBarSector[] sectors;
+	[SerializeField] TextMeshProUGUI halfFillTextField;
+
+	int currValue;
+
 
 	public void Init() {
 		for (int i = 0; i < sectors.Length; ++i) {
@@ -25,6 +28,51 @@ public class ProgressBar : MonoBehaviour {
 		}
 
 		currValue = 0;
+		halfFillTextField.text = "";
+	}
+
+	public void UpdateHalfFillValue(int newValue) {
+		if (newValue > sectors.Length)
+			newValue = sectors.Length;
+		if (newValue < 0)
+			newValue = 0;
+
+		float delta = newValue - currValue;
+
+
+		if (delta == 0) {
+			halfFillTextField.text = "";
+
+			for (int i = 0; i < sectors.Length; ++i) {
+				sectors[i].UnFillHalf(fillTime);
+			}
+		}
+			else if (delta > 0) {
+			halfFillTextField.rectTransform.position = sectors[newValue - 1].transform.position + (Vector3)changeTextOffset;
+			halfFillTextField.text = $"+{delta}";
+
+			for (int i = 0; i < sectors.Length; ++i) {
+				if(currValue <= i && i < newValue)
+					sectors[i].FillHalf(fillTime);
+				else
+					sectors[i].UnFillHalf(fillTime);
+			}
+		}
+		else if (delta < 0) {
+			halfFillTextField.rectTransform.position = sectors[newValue - 1].transform.position + (Vector3)changeTextOffset;
+			halfFillTextField.text = $"{delta}";
+
+			for (int i = 0; i < sectors.Length; ++i) {
+				if (newValue <= i && i < currValue)
+					sectors[i].FillHalf(fillTime);
+				else
+					sectors[i].UnFillHalf(fillTime);
+			}
+		}
+	}
+
+	public void ClearHalfFillValue() {
+		UpdateHalfFillValue(currValue);
 	}
 
 	public void UpdateValueNoCallback(int newValue) {
