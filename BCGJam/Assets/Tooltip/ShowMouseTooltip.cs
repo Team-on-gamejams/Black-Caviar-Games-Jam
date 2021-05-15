@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(UIEvents))]
 public class ShowMouseTooltip : MonoBehaviour {
 	[Header("Audio"), Space]
-	[SerializeField] string text;
+	[SerializeField] [Multiline(10)] string text;
 
 	[Header("Refs"), Space]
 	[SerializeField] UIEvents events;

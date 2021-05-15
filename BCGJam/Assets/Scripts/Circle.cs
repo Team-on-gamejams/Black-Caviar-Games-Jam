@@ -22,6 +22,8 @@ public class Circle : MonoBehaviour {
 
 	[Header("Refs"), Space]
 	[SerializeField] CircleSector[] sectors;
+	[SerializeField] CircleArrow[] arrowsGroup1;
+	[SerializeField] CircleArrow[] arrowsGroup2;
 
 	public void Init() {
 		for (int i = 0; i < sectors.Length; ++i) {
@@ -37,5 +39,17 @@ public class Circle : MonoBehaviour {
 		LeanTween.rotateAround(gameObject, Vector3.forward,  degreesRotation, degreesRotation / spinPerSecond)
 			.setEase(LeanTweenType.easeOutQuint)
 			.setOnComplete(onSpinEnd);
+	}
+
+	public void AnimateArrowsGroup1() {
+		foreach (var arr in arrowsGroup1) {
+			arr.PlaySelectAnimation();
+		}
+	}
+
+	public void AnimateArrowsGroup2() {
+		foreach (var arr in arrowsGroup2) {
+			arr.PlaySelectAnimation();
+		}
 	}
 }

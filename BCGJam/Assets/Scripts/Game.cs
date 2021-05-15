@@ -77,6 +77,8 @@ public class Game : MonoBehaviour {
 	}
 
 	void UseGroup1() {
+		circle.AnimateArrowsGroup1();
+
 		//TODO: 
 		Debug.Log("Calc sector data");
 
@@ -86,6 +88,8 @@ public class Game : MonoBehaviour {
 	}
 
 	void UseGroup2() {
+		circle.AnimateArrowsGroup2();
+		
 		//TODO: 
 		Debug.Log("Calc sector data");
 
