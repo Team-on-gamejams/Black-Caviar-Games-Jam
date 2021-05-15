@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 1223456
+    totalSpriteSurfaceArea: 1485152
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -47,9 +47,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 11af6d0345542894599273e4ac4e1032, type: 3}
   - {fileID: 21300000, guid: 002bb1132fc44e1479d4adddd4fdee4c, type: 3}
   - {fileID: 21300000, guid: 91e13763e3a5f8f4981f45d8c7bffd9b, type: 3}
+  - {fileID: 21300000, guid: f797afa39a684aa40aba793e6d57e2df, type: 3}
   - {fileID: 21300000, guid: 687cfab334334e1498f900efc66bdc8b, type: 3}
   - {fileID: 21300000, guid: f5a6281492b458848b8b2609b2b80382, type: 3}
   - {fileID: 21300000, guid: ca742484053a6a146ba850ba1784fbb5, type: 3}
+  - {fileID: 21300000, guid: a98eb6e796637d544bcf91a7cad05769, type: 3}
   - {fileID: 21300000, guid: e7d8ece95c37c7c4a8816faf3e0dea1c, type: 3}
   - {fileID: 21300000, guid: d3db987a179ecce4bb49012b138930ca, type: 3}
   - {fileID: 21300000, guid: d24a7aba2c6fb8b45a1ca10aa11ec954, type: 3}
@@ -68,13 +70,15 @@ SpriteAtlas:
   - ButtonSpin
   - ButtonUseCombo
   - CultistBlue
+  - CircleSector30Lvl2
   - ButtonSelectArrowGroup
   - SectorArrowType1
   - DemonHeader
+  - CircleSector30Lvl3
   - ProgressBarPartBlueFill
   - PoliceHeader
   - ProgressBarPartBlueBorder
-  - CircleSector30
+  - CircleSector30Lvl1
   - ParticlesComboReady
   - ProgressBarPartRedFill
   - ProgressBarPartYellowBorder
