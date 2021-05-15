@@ -133,9 +133,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 53769097}
+  - component: {fileID: 53769100}
   - component: {fileID: 53769099}
   - component: {fileID: 53769098}
-  - component: {fileID: 53769100}
   m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
@@ -224,8 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2324649fe84e6748a86c79f8a654cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowsIdGroup1: 
-  arrowsIdGroup2: 
+  arrowsIdGroup1: 08000000090000000a000000
+  arrowsIdGroup2: 000000000300000006000000
+  spinRange: {x: 12, y: 36}
+  spinPerSecond: 360
+  oneSpinDegree: 30
   sectors:
   - {fileID: 8739030487128094181}
   - {fileID: 1028276390}
@@ -875,7 +878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 242390531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398123046}
+        m_TargetAssemblyTypeName: Game, GeneralGameAssembly
+        m_MethodName: OnClickSelectGroup2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &242390531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,9 +1443,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd1b9f23ffc6a249b2d7b62e2fdb3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointToWin: 8
+  pointToLose: 8
+  pointToCombo: 4
   cgBeforeSpin: {fileID: 611959800}
   cgAfterSpin: {fileID: 976442474}
-  useComboButton: {fileID: 0}
+  useComboButton: {fileID: 1581618469}
   circle: {fileID: 53769100}
   progressBarWin: {fileID: 2018277987}
   progressBarLose: {fileID: 1604834495}
@@ -1605,7 +1623,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 428619596}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398123046}
+        m_TargetAssemblyTypeName: Game, GeneralGameAssembly
+        m_MethodName: OnClickSelectGroup1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &428619596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2066,7 +2096,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3476,7 +3506,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137793656}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398123046}
+        m_TargetAssemblyTypeName: Game, GeneralGameAssembly
+        m_MethodName: OnClickSpin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1137793656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3542,12 +3584,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1304500505}
-  - {fileID: 1144260367}
-  - {fileID: 541118627}
   - {fileID: 1554822093}
   - {fileID: 1566232708}
   - {fileID: 1271252324}
+  - {fileID: 1304500505}
+  - {fileID: 1144260367}
+  - {fileID: 541118627}
   m_Father: {fileID: 1372796985}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3586,7 +3628,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3972,7 +4014,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4321,7 +4363,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4971,7 +5013,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5046,7 +5088,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1141766396}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5179,7 +5221,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1581618470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 398123046}
+        m_TargetAssemblyTypeName: Game, GeneralGameAssembly
+        m_MethodName: OnClickComboBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1581618470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6965,7 +7019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 129.27808, y: 0}
+  m_AnchoredPosition: {x: 129.27783, y: 0}
   m_SizeDelta: {x: -765.4435, y: 128}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1956086195
