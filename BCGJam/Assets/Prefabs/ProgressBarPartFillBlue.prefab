@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2976272438381627075}
   - component: {fileID: 2976272438381627101}
   - component: {fileID: 2976272438381627074}
+  - component: {fileID: 2563328044138041986}
   m_Layer: 5
-  m_Name: ProgressBarPartFill
+  m_Name: ProgressBarPartFillBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2563328044138041986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976272438381627072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49b8326b5f75414599938896e29f8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 2976272438381627074}
+  borderImage: {fileID: 2976272439627056951}
 --- !u!1 &2976272439627056949
 GameObject:
   m_ObjectHideFlags: 0
