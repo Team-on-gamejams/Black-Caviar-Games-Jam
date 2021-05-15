@@ -32,57 +32,73 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 1485152
+    totalSpriteSurfaceArea: 1740684
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: b0c11010f5b9bce42a6df9fbfcdfc0bb, type: 3}
   - {fileID: 21300000, guid: c0508a30bc77e794eb495e792ab1e08b, type: 3}
+  - {fileID: 21300000, guid: e5e8f4d09c42e1346abbee9d7144f367, type: 3}
+  - {fileID: 21300000, guid: 535f749190074a54781bf2fb9649ecae, type: 3}
   - {fileID: 21300000, guid: 44888d3266076404a9d404bb75b8d11f, type: 3}
-  - {fileID: 21300000, guid: 175792524170d2e49970457475fd64bb, type: 3}
-  - {fileID: 21300000, guid: 212aa5627b7cfba41903175cddc845fa, type: 3}
   - {fileID: 21300000, guid: 68873003a3f6b0c4282627050fa6eb66, type: 3}
+  - {fileID: 21300000, guid: 6646750337b516f4d992a9eb78764d40, type: 3}
   - {fileID: 21300000, guid: 11af6d0345542894599273e4ac4e1032, type: 3}
   - {fileID: 21300000, guid: 002bb1132fc44e1479d4adddd4fdee4c, type: 3}
-  - {fileID: 21300000, guid: 91e13763e3a5f8f4981f45d8c7bffd9b, type: 3}
   - {fileID: 21300000, guid: f797afa39a684aa40aba793e6d57e2df, type: 3}
   - {fileID: 21300000, guid: 687cfab334334e1498f900efc66bdc8b, type: 3}
   - {fileID: 21300000, guid: f5a6281492b458848b8b2609b2b80382, type: 3}
+  - {fileID: 21300000, guid: 1e14d124fc5b4224b8a30a65b66ef055, type: 3}
   - {fileID: 21300000, guid: ca742484053a6a146ba850ba1784fbb5, type: 3}
+  - {fileID: 21300000, guid: d876b0e63aefdc44e8fc0e73e66fca35, type: 3}
+  - {fileID: 21300000, guid: 2dbab42749c5424438459d836d945405, type: 3}
   - {fileID: 21300000, guid: a98eb6e796637d544bcf91a7cad05769, type: 3}
+  - {fileID: 21300000, guid: 5ef259885dff06b4995ed6ffa0c2bcd8, type: 3}
+  - {fileID: 21300000, guid: 4a6eaa0911d3a864084373c68d16920f, type: 3}
   - {fileID: 21300000, guid: e7d8ece95c37c7c4a8816faf3e0dea1c, type: 3}
+  - {fileID: 21300000, guid: e167342a069fd71479802b21b24aa265, type: 3}
   - {fileID: 21300000, guid: d3db987a179ecce4bb49012b138930ca, type: 3}
   - {fileID: 21300000, guid: d24a7aba2c6fb8b45a1ca10aa11ec954, type: 3}
+  - {fileID: 21300000, guid: b51a8dda66e824b4ebf0b81a6d61a627, type: 3}
   - {fileID: 21300000, guid: 2b3fcfeaf8686864b9637d57bccdf845, type: 3}
   - {fileID: 21300000, guid: 46a7cb3b47cf42e4487a5cba066b7b9e, type: 3}
   - {fileID: 21300000, guid: a8f3f9cb48898b44fa62f1c3ff305a1e, type: 3}
   - {fileID: 21300000, guid: 53740b4c911fa7140b6ed1699148db0a, type: 3}
   - {fileID: 21300000, guid: cd00811d01c67a342ad674023addf99d, type: 3}
+  - {fileID: 21300000, guid: 39e13b0ebcc36a146b97eccad0d3bd9d, type: 3}
+  - {fileID: 21300000, guid: 5cedc01e96ce29d4989ef1b5c506c024, type: 3}
   m_PackedSpriteNamesToIndex:
-  - CultistRed
   - ProgressBarPartRedBorder
+  - a_yellow
+  - yellow
   - ProgressBarPartYellowFill
-  - CultistGreen
-  - CultistYellow
   - CircleBack
+  - green
   - ButtonSpin
   - ButtonUseCombo
-  - CultistBlue
   - CircleSector30Lvl2
   - ButtonSelectArrowGroup
   - SectorArrowType1
+  - a_green
   - DemonHeader
+  - blue
+  - a_blue
   - CircleSector30Lvl3
+  - green_r
+  - red
   - ProgressBarPartBlueFill
+  - yellow_r
   - PoliceHeader
   - ProgressBarPartBlueBorder
+  - a_red
   - CircleSector30Lvl1
   - ParticlesComboReady
   - ProgressBarPartRedFill
   - ProgressBarPartYellowBorder
   - SectorArrowType2
+  - red_r
+  - blue_r
   m_RenderDataMap: {}
   m_Tag: GameSpriteAtlas
   m_IsVariant: 0
