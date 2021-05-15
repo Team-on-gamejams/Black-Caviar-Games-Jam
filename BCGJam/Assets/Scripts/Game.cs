@@ -18,6 +18,10 @@ public class Game : MonoBehaviour {
 	int statCombo;
 	int filledBars;
 
+	[Header("Particles"), Space]
+	[SerializeField] ParticleSystem particlesWhenComboFull;
+	[SerializeField] ParticleSystem[] particlesWhenComboUsed;
+
 	[Header("Refs"), Space]
 	[SerializeField] CanvasGroup cgBeforeSpin;
 	[SerializeField] CanvasGroup cgAfterSpin;
@@ -28,6 +32,9 @@ public class Game : MonoBehaviour {
 	[SerializeField] ProgressBar progressBarWin;
 	[SerializeField] ProgressBar progressBarLose;
 	[SerializeField] ProgressBar progressBarCombo;
+
+	bool isGroupSelectionShowed;
+	bool isActivateComboBar;
 
 	private void Awake() {
 		Init();
@@ -61,6 +68,12 @@ public class Game : MonoBehaviour {
 		statCombo = 0;
 
 		filledBars = 0;
+
+		isGroupSelectionShowed = false;
+
+		particlesWhenComboFull.Stop();
+		foreach (var part in particlesWhenComboUsed) 
+			part.Stop();
 	}
 
 	void UseGroup1() {
@@ -105,11 +118,24 @@ public class Game : MonoBehaviour {
 
 	public void OnClickComboBar() {
 		useComboButton.interactable = false;
+		particlesWhenComboFull.Stop();
 
-		progressBarCombo.UpdateValue(statCombo = 0);
+		if (isGroupSelectionShowed) {
+			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
 
-		//TODO: 
-		Debug.Log("Use combo");
+			OnSelectAnyGroup();
+			UseGroup1();
+			UseGroup2();
+			CheckConditions();
+		}
+		else {
+			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
+			
+			isActivateComboBar = true;
+
+			foreach (var part in particlesWhenComboUsed)
+				part.Play();
+		}
 	}
 
 	void CheckConditions() {
@@ -118,15 +144,24 @@ public class Game : MonoBehaviour {
 			//TODO: 
 			Debug.Log("Win");
 		}
+		if (statWin < 0) {
+			statWin = 0;
+		}
 
 		if (statLose > pointToLose) {
 			statLose = pointToLose;
 			//TODO: 
 			Debug.Log("Lose");
 		}
+		if (statLose < 0) {
+			statLose = 0;
+		}
 
 		if (statCombo > pointToCombo) {
 			statCombo = pointToCombo;
+		}
+		if (statCombo < 0) {
+			statCombo = 0;
 		}
 
 		//TODO: 
@@ -140,14 +175,29 @@ public class Game : MonoBehaviour {
 	void OnSelectAnyGroup() {
 		cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = false;
 		LeanTweenEx.ChangeAlpha(cgAfterSpin, 0.0f, 0.2f);
+		isGroupSelectionShowed = false;
 	}
 	#endregion
 
 
 	#region Callbacks
 	void OnSpinEnd() {
-		cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = true;
-		LeanTweenEx.ChangeAlpha(cgAfterSpin, 1.0f, 0.2f);
+		if (isActivateComboBar) {
+			isActivateComboBar = false;
+
+			foreach (var part in particlesWhenComboUsed)
+				part.Stop();
+
+			OnSelectAnyGroup();
+			UseGroup1();
+			UseGroup2();
+			CheckConditions();
+		}
+		else {
+			cgAfterSpin.interactable = cgAfterSpin.blocksRaycasts = true;
+			LeanTweenEx.ChangeAlpha(cgAfterSpin, 1.0f, 0.2f);
+			isGroupSelectionShowed = true;
+		}
 	}
 
 	void OnAllEffectAnimationDone() {
@@ -159,8 +209,7 @@ public class Game : MonoBehaviour {
 		if (statCombo == pointToCombo) {
 			useComboButton.interactable = true;
 
-			//TODO: 
-			Debug.Log("Effect for fill");
+			particlesWhenComboFull.Play();
 		}
 	}
 

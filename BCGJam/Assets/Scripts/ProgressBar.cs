@@ -27,6 +27,27 @@ public class ProgressBar : MonoBehaviour {
 		currValue = 0;
 	}
 
+	public void UpdateValueNoCallback(int newValue) {
+		float delta = Mathf.Abs(currValue - newValue);
+
+		if (delta == 0) {
+			return;
+		}
+
+		if (newValue - currValue > 0) {
+			for (int i = currValue; i < newValue; ++i) {
+				sectors[i].Fill(fillTime, (i - currValue) * fillTime);
+			}
+		}
+		else {
+			for (int i = currValue - 1; i >= newValue; --i) {
+				sectors[i].UnFill(fillTime, (currValue - i - 1) * fillTime);
+			}
+		}
+
+		currValue = newValue;
+	}
+
 	public void UpdateValue(int newValue) {
 		float delta = Mathf.Abs(currValue - newValue);
 
@@ -42,7 +63,7 @@ public class ProgressBar : MonoBehaviour {
 		}
 		else {
 			for (int i = currValue - 1; i >= newValue; --i) {
-				sectors[i].UnFill(fillTime, (i - currValue) * fillTime);
+				sectors[i].UnFill(fillTime, (currValue - i - 1) * fillTime);
 			}
 		}
 		

@@ -18,10 +18,12 @@ public class ProgressBarSector : MonoBehaviour {
 	}
 
 	public void Fill(float t, float delay) {
+		LeanTween.cancel(gameObject, false);
+		
 		if (fillImage.fillAmount == 1.0f)
 			return;
 
-		LeanTween.value(transform.parent.gameObject, fillImage.fillAmount, 1.0f, t)
+		LeanTween.value(gameObject, fillImage.fillAmount, 1.0f, t)
 		.setDelay(delay)
 		.setOnUpdate((float val)=> {
 			fillImage.fillAmount = val;
@@ -29,10 +31,12 @@ public class ProgressBarSector : MonoBehaviour {
 	}
 
 	public void UnFill(float t, float delay) {
+		LeanTween.cancel(gameObject, false);
+		
 		if (fillImage.fillAmount == 0.0f)
 			return;
 
-		LeanTween.value(transform.parent.gameObject, fillImage.fillAmount, 0.0f, t)
+		LeanTween.value(gameObject, fillImage.fillAmount, 0.0f, t)
 		.setDelay(delay)
 		.setOnUpdate((float val) => {
 			fillImage.fillAmount = val;

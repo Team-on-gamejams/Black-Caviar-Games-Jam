@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 1207072
+    totalSpriteSurfaceArea: 1223456
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -54,6 +54,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d3db987a179ecce4bb49012b138930ca, type: 3}
   - {fileID: 21300000, guid: d24a7aba2c6fb8b45a1ca10aa11ec954, type: 3}
   - {fileID: 21300000, guid: 2b3fcfeaf8686864b9637d57bccdf845, type: 3}
+  - {fileID: 21300000, guid: 46a7cb3b47cf42e4487a5cba066b7b9e, type: 3}
   - {fileID: 21300000, guid: a8f3f9cb48898b44fa62f1c3ff305a1e, type: 3}
   - {fileID: 21300000, guid: 53740b4c911fa7140b6ed1699148db0a, type: 3}
   - {fileID: 21300000, guid: cd00811d01c67a342ad674023addf99d, type: 3}
@@ -74,6 +75,7 @@ SpriteAtlas:
   - PoliceHeader
   - ProgressBarPartBlueBorder
   - CircleSector30
+  - ParticlesComboReady
   - ProgressBarPartRedFill
   - ProgressBarPartYellowBorder
   - SectorArrowType2
