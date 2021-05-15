@@ -229,6 +229,7 @@ MonoBehaviour:
   spinRange: {x: 12, y: 36}
   spinPerSecond: 360
   oneSpinDegree: 30
+  firstSpin: 24
   sectors:
   - {fileID: 8739030487128094181}
   - {fileID: 1028276390}
@@ -4556,6 +4557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CircleSector (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}
@@ -9868,6 +9874,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircleSector (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}
 --- !u!224 &1351235326 stripped
@@ -11204,6 +11215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CircleSector (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}
@@ -13154,6 +13170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircleSector (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}
 --- !u!224 &1900578676 stripped
@@ -14082,6 +14103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircleSector (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}
 --- !u!224 &1950668110 stripped
@@ -14146,7 +14172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -73.65723, y: 0}
+  m_AnchoredPosition: {x: -73.65625, y: 0}
   m_SizeDelta: {x: -905.312, y: 128}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1956086195
@@ -17098,6 +17124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CircleSector
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739030487128094181, guid: e0f163ceaf907c64492d652eaf1a16f0,
+        type: 3}
+      propertyPath: initialType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f163ceaf907c64492d652eaf1a16f0, type: 3}

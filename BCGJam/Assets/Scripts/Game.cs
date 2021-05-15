@@ -79,41 +79,61 @@ public class Game : MonoBehaviour {
 	void UseGroup1() {
 		circle.AnimateArrowsGroup1();
 
-		//TODO: 
-		Debug.Log("Calc sector data");
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		statLose += 3;
-		--statWin;
-		statCombo += 2;
+		//TODO: 
+		Debug.Log("green mod data");
+
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
 	}
 
 	void UseGroup2() {
 		circle.AnimateArrowsGroup2();
 
-		//TODO: 
-		Debug.Log("Calc sector data");
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		--statLose;
-		statWin += 3;
+		//TODO: 
+		Debug.Log("green mod data");
+
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
 	}
 
-	#region Button Callbacks
+	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
-		progressBarLose.UpdateHalfFillValue(statLose + 3 + loseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin - 1);
-		progressBarCombo.UpdateHalfFillValue(statCombo + 2);
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+
+		//TODO: 
+		Debug.Log("green mod UI");
 	}
 
 	public void OnMouseOverGroup2() {
-		progressBarLose.UpdateHalfFillValue(statLose - 1 + loseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + 3);
-		progressBarCombo.UpdateHalfFillValue(statCombo);
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+
+		//TODO: 
+		Debug.Log("green mod UI");
 	}
 
 	public void OnMouseOverGroupBoth() {
-		progressBarLose.UpdateHalfFillValue(statLose + 3 - 1 + loseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin - 1 + 3);
-		progressBarCombo.UpdateHalfFillValue(statCombo + 2);
+		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+
+		//TODO: 
+		Debug.Log("green mod UI");
 	}
 
 	public void OnMouseExitGroup1() {
@@ -229,7 +249,6 @@ public class Game : MonoBehaviour {
 		progressBarWin.ClearHalfFillValue();
 	}
 	#endregion
-
 
 	#region Callbacks
 	void OnSpinEnd() {
