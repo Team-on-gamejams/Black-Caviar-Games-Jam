@@ -47,8 +47,8 @@ public class ProgressBar : MonoBehaviour {
 				sectors[i].UnFillHalf(fillTime);
 			}
 		}
-			else if (delta > 0) {
-			halfFillTextField.rectTransform.position = sectors[newValue - 1].transform.position + (Vector3)changeTextOffset;
+		else if (delta > 0) {
+			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)changeTextOffset;
 			halfFillTextField.text = $"+{delta}";
 
 			for (int i = 0; i < sectors.Length; ++i) {
@@ -59,7 +59,7 @@ public class ProgressBar : MonoBehaviour {
 			}
 		}
 		else if (delta < 0) {
-			halfFillTextField.rectTransform.position = sectors[newValue - 1].transform.position + (Vector3)changeTextOffset;
+			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)changeTextOffset;
 			halfFillTextField.text = $"{delta}";
 
 			for (int i = 0; i < sectors.Length; ++i) {
