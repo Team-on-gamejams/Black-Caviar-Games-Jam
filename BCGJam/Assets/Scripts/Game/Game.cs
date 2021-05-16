@@ -119,63 +119,63 @@ public class Game : MonoBehaviour {
 	void UseGroup1() {
 		circle.AnimateArrowsGroup1();
 
-		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
-		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
-		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
-		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
+		lastGreenMod = greenMod;
 	}
 
 	void UseGroup2() {
 		circle.AnimateArrowsGroup2();
 
-		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
-		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
-		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
-		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
+		lastGreenMod = greenMod;
 	}
 
 	void UseGroupBoth() {
 		circle.AnimateArrowsGroup1();
 		circle.AnimateArrowsGroup2();
 
-		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
-		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
-		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
-		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
+		lastGreenMod = greenMod;
 	}
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
-		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
-		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
-		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroup2() {
-		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
-		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
-		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroupBoth() {
-		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
+		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
-		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
-		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseExitGroup1() {

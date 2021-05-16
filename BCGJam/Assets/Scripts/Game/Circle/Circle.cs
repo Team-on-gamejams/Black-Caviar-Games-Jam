@@ -40,27 +40,7 @@ public class Circle : MonoBehaviour {
 		isFirstSpin = true;
 	}
 
-	public void GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod) {
-		redMod = 0;
-		yellowMod = 0;
-		blueMod = 0;
-		greenMod = 0;
-
-		foreach (var id in arrowsIdGroup1)
-			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
-	}
-
-	public void GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod) {
-		redMod = 0;
-		yellowMod = 0;
-		blueMod = 0;
-		greenMod = 0;
-
-		foreach (var id in arrowsIdGroup2)
-			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
-	}
-
-	public void GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod) {
+	public void GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, float multipleMod) {
 		redMod = 0;
 		yellowMod = 0;
 		blueMod = 0;
@@ -69,8 +49,45 @@ public class Circle : MonoBehaviour {
 		foreach (var id in arrowsIdGroup1)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 
+		ApplyModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, multipleMod);
+	}
+
+	public void GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, float multipleMod) {
+		redMod = 0;
+		yellowMod = 0;
+		blueMod = 0;
+		greenMod = 0;
+
 		foreach (var id in arrowsIdGroup2)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+
+		ApplyModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, multipleMod);
+	}
+
+	public void GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, float multipleMod) {
+		redMod = 0;
+		yellowMod = 0;
+		blueMod = 0;
+		greenMod = 0;
+
+		foreach (var id in arrowsIdGroup1)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+
+		foreach (var id in arrowsIdGroup2)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+
+		ApplyModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, multipleMod);
+	}
+
+	void ApplyModifiers(ref int redMod, ref int yellowMod, ref int blueMod, ref int greenMod, float multipleMod) {
+		if(redMod > 1) 
+			redMod = Mathf.RoundToInt(multipleMod * redMod);
+		if (yellowMod > 1)
+			yellowMod = Mathf.RoundToInt(multipleMod * yellowMod);
+		if (blueMod > 1)
+			blueMod = Mathf.RoundToInt(multipleMod * blueMod);
+		if (greenMod > 1)
+			greenMod = Mathf.RoundToInt(multipleMod * greenMod);
 	}
 
 	public void StartCatchUpgradeInput() {

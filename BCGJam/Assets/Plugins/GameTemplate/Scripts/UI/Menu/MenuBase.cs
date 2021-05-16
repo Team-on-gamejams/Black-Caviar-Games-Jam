@@ -91,13 +91,13 @@ public abstract class MenuBase : MonoBehaviour {
 	}
 
 	public virtual void EnableAllSelectable() {
-		foreach (var selectable in selectables)
-			selectable.interactable = true;
+		//foreach (var selectable in selectables)
+		//	selectable.interactable = true;
 	}
 
 	public virtual void DisableAllSelectable() {
-		foreach (var selectable in selectables) 
-			selectable.interactable = false;
+		//foreach (var selectable in selectables) 
+		//	selectable.interactable = false;
 	}
 
 	public void SelectButton() {
