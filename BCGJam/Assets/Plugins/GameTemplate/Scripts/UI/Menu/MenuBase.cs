@@ -90,12 +90,12 @@ public abstract class MenuBase : MonoBehaviour {
 		}
 	}
 
-	public void EnableAllSelectable() {
+	public virtual void EnableAllSelectable() {
 		foreach (var selectable in selectables)
 			selectable.interactable = true;
 	}
 
-	public void DisableAllSelectable() {
+	public virtual void DisableAllSelectable() {
 		foreach (var selectable in selectables) 
 			selectable.interactable = false;
 	}

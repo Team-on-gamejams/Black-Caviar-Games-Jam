@@ -126,7 +126,7 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	void OnCancelClick(InputAction.CallbackContext context) {
-		if (context.ReadValueAsButton() && context.phase == InputActionPhase.Performed)
-			HideTopMenu();
+		//if (context.ReadValueAsButton() && context.phase == InputActionPhase.Performed)
+		//	HideTopMenu();
 	}
 }

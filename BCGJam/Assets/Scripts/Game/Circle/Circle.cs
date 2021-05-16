@@ -27,8 +27,12 @@ public class Circle : MonoBehaviour {
 	[SerializeField] CircleArrow[] arrowsGroup2;
 
 	bool isFirstSpin;
+	int zeroPos;
 
 	public void Init() {
+		zeroPos = 0;
+		gameObject.transform.eulerAngles = Vector3.zero;
+
 		for (int i = 0; i < sectors.Length; ++i) {
 			sectors[i].Init(i);
 		}
@@ -43,7 +47,7 @@ public class Circle : MonoBehaviour {
 		greenMod = 0;
 
 		foreach (var id in arrowsIdGroup1) 
-			sectors[id].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 	}
 
 	public void GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod) {
@@ -53,7 +57,7 @@ public class Circle : MonoBehaviour {
 		greenMod = 0;
 
 		foreach (var id in arrowsIdGroup2) 
-			sectors[id].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 	}
 
 	public void GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod) {
@@ -63,16 +67,20 @@ public class Circle : MonoBehaviour {
 		greenMod = 0;
 
 		foreach (var id in arrowsIdGroup1) 
-			sectors[id].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 
 		foreach (var id in arrowsIdGroup2) 
-			sectors[id].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 	}
 
 	public void Spin() {
 		int spinTimer = isFirstSpin ? firstSpin : spinRange.GetRandomValue();
 		float degreesRotation = oneSpinDegree * spinTimer;
-		Debug.Log($"Spin by {spinTimer}");
+
+		zeroPos += 12 - spinTimer % 12;
+		zeroPos %= 12;
+
+		Debug.Log($"Spin by {spinTimer}. Curr zero: {zeroPos}");
 
 		LeanTween.rotateAround(gameObject, Vector3.forward,  degreesRotation, degreesRotation / spinPerSecond)
 			.setEase(LeanTweenType.easeOutQuint)
@@ -90,6 +98,28 @@ public class Circle : MonoBehaviour {
 	public void AnimateArrowsGroup2() {
 		foreach (var arr in arrowsGroup2) {
 			arr.PlaySelectAnimation();
+		}
+	}
+
+	public void UpgradeRandom() {
+		CircleSector sector = sectors.Random();
+		sector.Upgrade(Random.Range(0, 2), Rand());
+
+		CircleSector.SectorType Rand() {
+			int r = Random.Range(0, 4);
+
+			switch (r) {
+				case 0:
+					return CircleSector.SectorType.Red;
+				case 1:
+					return CircleSector.SectorType.Green;
+				case 2:
+					return CircleSector.SectorType.Blue;
+				case 3:
+					return CircleSector.SectorType.Yellow;
+				default:
+					return CircleSector.SectorType.Empty;
+			}
 		}
 	}
 }

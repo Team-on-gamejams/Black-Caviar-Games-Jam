@@ -34,8 +34,15 @@ public class Game : MonoBehaviour {
 	[SerializeField] ProgressBar progressBarLose;
 	[SerializeField] ProgressBar progressBarCombo;
 
+	[Header("Refs - menu"), Space]
+	[SerializeField] MenuManager menuManager;
+	[SerializeField] MenuWinPopup popupWin;
+	[SerializeField] MenuLosePopup popupLose;
+	[SerializeField] MenuUpgradePopup popupUpgrade;
+
 	bool isGroupSelectionShowed;
 	bool isActivateComboBar;
+	int lastGreenMod;
 
 	private void Awake() {
 		Init();
@@ -47,9 +54,13 @@ public class Game : MonoBehaviour {
 		progressBarCombo.onValueUpdated += OnSingleBarFill;
 
 		progressBarCombo.onValueUpdated += OnComboBarFill;
+
+		popupUpgrade.onSelectUpgradeEvent += AllowSpin;
+
+		GameManager.Instance.game = this;
 	}
 
-	void Init() {
+	public void Init() {
 		circle.Init();
 		progressBarWin.Init();
 		progressBarLose.Init();
@@ -58,7 +69,7 @@ public class Game : MonoBehaviour {
 		buttonSpin.interactable = true;
 
 		foreach (var b in buttonsSelectGroup) {
-			b.interactable = false;
+			b.image.raycastTarget = b.interactable = false;
 		}
 
 		useComboButton.image.raycastTarget = useComboButton.interactable = false;
@@ -81,12 +92,10 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		//TODO: 
-		Debug.Log("green mod data");
-
 		statLose -= blueMod;
 		statWin += redMod;
 		statCombo += yellowMod;
+		lastGreenMod = greenMod;
 	}
 
 	void UseGroup2() {
@@ -94,13 +103,29 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		//TODO: 
-		Debug.Log("green mod data");
+		statLose -= blueMod;
+		statWin += redMod;
+		statCombo += yellowMod;
+		lastGreenMod = greenMod;
+	}
+
+	void UseGroupBoth() {
+		circle.AnimateArrowsGroup1();
+		circle.AnimateArrowsGroup2();
+
+		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
 		statLose -= blueMod;
 		statWin += redMod;
 		statCombo += yellowMod;
+		lastGreenMod = greenMod;
 	}
+
+	#region Upgrades
+	public void UpgradeRandom() {
+		circle.UpgradeRandom();
+	}
+	#endregion
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
@@ -182,8 +207,7 @@ public class Game : MonoBehaviour {
 
 		if (isGroupSelectionShowed) {
 			OnSelectAnyGroup();
-			UseGroup1();
-			UseGroup2();
+			UseGroupBoth();
 			AfterUseGroup();
 
 			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
@@ -204,8 +228,6 @@ public class Game : MonoBehaviour {
 
 		if (statWin >= pointToWin) {
 			statWin = pointToWin;
-			//TODO: 
-			Debug.Log("Win");
 		}
 		if (statWin < 0) {
 			statWin = 0;
@@ -215,8 +237,6 @@ public class Game : MonoBehaviour {
 
 		if (statLose >= pointToLose) {
 			statLose = pointToLose;
-			//TODO: 
-			Debug.Log("Lose");
 		}
 		if (statLose < 0) {
 			statLose = 0;
@@ -239,7 +259,7 @@ public class Game : MonoBehaviour {
 
 	void OnSelectAnyGroup() {
 		foreach (var b in buttonsSelectGroup) {
-			b.interactable = false;
+			b.image.raycastTarget = b.interactable = false;
 		}
 
 		isGroupSelectionShowed = false;
@@ -256,15 +276,14 @@ public class Game : MonoBehaviour {
 			isActivateComboBar = false;
 
 			OnSelectAnyGroup();
-			UseGroup1();
-			UseGroup2();
+			UseGroupBoth();
 			AfterUseGroup();
 
 			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
 		}
 		else {
 			foreach (var b in buttonsSelectGroup) {
-				b.interactable = true;
+				b.image.raycastTarget = b.interactable = true;
 			}
 
 			isGroupSelectionShowed = true;
@@ -273,7 +292,22 @@ public class Game : MonoBehaviour {
 	}
 
 	void OnAllEffectAnimationDone() {
-		buttonSpin.interactable = true;
+		if (statWin >= pointToWin) {
+			menuManager.Show(popupWin, false);
+		}
+		else if (statLose >= pointToLose) {
+			menuManager.Show(popupLose, false);
+		}
+		else {
+			if(lastGreenMod != 0) {
+				//TODO: 
+				Debug.Log("green mod");
+				menuManager.Show(popupUpgrade, false);
+			}
+			else {
+				AllowSpin();
+			}
+		}
 	}
 
 	void OnComboBarFill() {
@@ -290,6 +324,10 @@ public class Game : MonoBehaviour {
 		if(filledBars == 3) {
 			OnAllEffectAnimationDone();
 		}
+	}
+
+	void AllowSpin() {
+		buttonSpin.interactable = true;
 	}
 	#endregion
 }

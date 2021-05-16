@@ -69,6 +69,13 @@ public class CircleSector : MonoBehaviour {
 		}
 	}
 
+	public void Upgrade(int level, SectorType type) {
+		currLevel = level;
+		currType = type;
+
+		RecalcVisuals();
+	}
+
 	void RecalcVisuals() {
 		foreach (var level in levels) {
 			if (level.level == currLevel)
