@@ -27,6 +27,10 @@ public class ShowMouseTooltip : MonoBehaviour {
 	}
 #endif
 
+	public void UpdateText(string newText) {
+		text = newText;
+	}
+
 	void OnEnter() {
 		GameManager.Instance.tooltip.SetText(text);
 		GameManager.Instance.tooltip.Show();

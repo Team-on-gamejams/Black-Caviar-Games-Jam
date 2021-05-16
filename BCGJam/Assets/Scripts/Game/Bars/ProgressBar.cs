@@ -14,6 +14,8 @@ public class ProgressBar : MonoBehaviour {
 	[Header("Visual"), Space]
 	[SerializeField] float fillTime = 0.1f;
 	[SerializeField] Vector2 changeTextOffset;
+	[SerializeField] Vector2 changeTextOffsetAfterSomeValue;
+	[SerializeField] int someValue = 8;
 
 	[Header("Refs"), Space]
 	[SerializeField] ProgressBarSector[] sectors;
@@ -28,7 +30,8 @@ public class ProgressBar : MonoBehaviour {
 		}
 
 		currValue = 0;
-		halfFillTextField.text = "";
+		if(halfFillTextField)
+			halfFillTextField.text = "";
 	}
 
 	public void UpdateHalfFillValue(int newValue) {
@@ -41,15 +44,18 @@ public class ProgressBar : MonoBehaviour {
 
 
 		if (delta == 0) {
-			halfFillTextField.text = "";
+			if(halfFillTextField)
+				halfFillTextField.text = "";
 
 			for (int i = 0; i < sectors.Length; ++i) {
 				sectors[i].UnFillHalf(fillTime);
 			}
 		}
 		else if (delta > 0) {
-			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)changeTextOffset;
-			halfFillTextField.text = $"+{delta}";
+			if (halfFillTextField) {
+				halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
+				halfFillTextField.text = $"+{delta}";
+			}
 
 			for (int i = 0; i < sectors.Length; ++i) {
 				if(currValue <= i && i < newValue)
@@ -59,8 +65,10 @@ public class ProgressBar : MonoBehaviour {
 			}
 		}
 		else if (delta < 0) {
-			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)changeTextOffset;
-			halfFillTextField.text = $"{delta}";
+			if (halfFillTextField) {
+				halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
+				halfFillTextField.text = $"{delta}";
+			}
 
 			for (int i = 0; i < sectors.Length; ++i) {
 				if (newValue <= i && i < currValue)

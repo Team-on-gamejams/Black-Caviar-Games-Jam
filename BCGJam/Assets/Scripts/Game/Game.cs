@@ -14,10 +14,17 @@ public class Game : MonoBehaviour {
 	[SerializeField] int pointToLose = 8;
 	[SerializeField] int pointToCombo = 4;
 	[SerializeField] int loseGrowPerTurn = 1;
+	[SerializeField] int turnsToIncreaseGrow = 5;
+
 	int statLose;
 	int statWin;
 	int statCombo;
+
+	int statLoseGrowPerTurn;
+	int statTurnsToIncreaseGrow;
+
 	int filledBars;
+
 
 	[Header("Particles"), Space]
 	[SerializeField] ParticleSystem particlesWhenComboFull;
@@ -30,9 +37,15 @@ public class Game : MonoBehaviour {
 	[SerializeField] Button useComboButton;
 	[Space]
 	[SerializeField] Circle circle;
+	[Space]
 	[SerializeField] ProgressBar progressBarWin;
 	[SerializeField] ProgressBar progressBarLose;
 	[SerializeField] ProgressBar progressBarCombo;
+	[SerializeField] ProgressBar progressBarUpgrade;
+	[SerializeField] ProgressBar progressBarLoseGrow;
+	[Space]
+	[SerializeField] ShowMouseTooltip defeatBarTooltip;
+	[SerializeField] [Multiline(3)] string defeatBarTooltipText;
 
 	[Header("Refs - menu"), Space]
 	[SerializeField] MenuManager menuManager;
@@ -52,6 +65,7 @@ public class Game : MonoBehaviour {
 		progressBarWin.onValueUpdated += OnSingleBarFill;
 		progressBarLose.onValueUpdated += OnSingleBarFill;
 		progressBarCombo.onValueUpdated += OnSingleBarFill;
+		progressBarLoseGrow.onValueUpdated += OnSingleBarFill;
 
 		progressBarCombo.onValueUpdated += OnComboBarFill;
 
@@ -65,6 +79,7 @@ public class Game : MonoBehaviour {
 		progressBarWin.Init();
 		progressBarLose.Init();
 		progressBarCombo.Init();
+		progressBarLoseGrow.Init();
 
 		buttonSpin.interactable = true;
 
@@ -79,6 +94,11 @@ public class Game : MonoBehaviour {
 		statCombo = 0;
 
 		filledBars = 0;
+
+		statLoseGrowPerTurn = loseGrowPerTurn;
+		statTurnsToIncreaseGrow = 0;
+
+		defeatBarTooltip.UpdateText(defeatBarTooltipText.Replace("{num}", statLoseGrowPerTurn.ToString()));
 
 		isGroupSelectionShowed = false;
 
@@ -131,7 +151,7 @@ public class Game : MonoBehaviour {
 	public void OnMouseOverGroup1() {
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
 
@@ -142,7 +162,7 @@ public class Game : MonoBehaviour {
 	public void OnMouseOverGroup2() {
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 		
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
 
@@ -153,7 +173,7 @@ public class Game : MonoBehaviour {
 	public void OnMouseOverGroupBoth() {
 		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
 
@@ -162,19 +182,19 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseExitGroup1() {
-		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
 	}
 
 	public void OnMouseExitGroup2() {
-		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
 	}
 
 	public void OnMouseExitGroupBoth() {
-		progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
 	}
@@ -233,7 +253,14 @@ public class Game : MonoBehaviour {
 			statWin = 0;
 		}
 
-		statLose += loseGrowPerTurn;
+		statLose += statLoseGrowPerTurn;
+
+		++statTurnsToIncreaseGrow;
+		if(statTurnsToIncreaseGrow > turnsToIncreaseGrow) {
+			statTurnsToIncreaseGrow = 0;
+			++statLoseGrowPerTurn;
+			defeatBarTooltip.UpdateText(defeatBarTooltipText.Replace("{num}", statLoseGrowPerTurn.ToString()));
+		}
 
 		if (statLose >= pointToLose) {
 			statLose = pointToLose;
@@ -255,6 +282,9 @@ public class Game : MonoBehaviour {
 		progressBarWin.UpdateValue(statWin);
 		progressBarLose.UpdateValue(statLose);
 		progressBarCombo.UpdateValue(statCombo);
+
+		progressBarLoseGrow.ClearHalfFillValue();
+		progressBarLoseGrow.UpdateValue(statTurnsToIncreaseGrow);
 	}
 
 	void OnSelectAnyGroup() {
@@ -287,7 +317,8 @@ public class Game : MonoBehaviour {
 			}
 
 			isGroupSelectionShowed = true;
-			progressBarLose.UpdateHalfFillValue(statLose + loseGrowPerTurn);
+			progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
+			progressBarLoseGrow.UpdateHalfFillValue(statTurnsToIncreaseGrow + 1);
 		}
 	}
 
@@ -321,7 +352,7 @@ public class Game : MonoBehaviour {
 	void OnSingleBarFill() {
 		++filledBars;
 
-		if(filledBars == 3) {
+		if(filledBars == 4) {
 			OnAllEffectAnimationDone();
 		}
 	}
