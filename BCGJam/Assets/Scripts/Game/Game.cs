@@ -13,8 +13,13 @@ public class Game : MonoBehaviour {
 	[SerializeField] int pointToWin = 8;
 	[SerializeField] int pointToLose = 8;
 	[SerializeField] int pointToCombo = 4;
+	[Space]
 	[SerializeField] int loseGrowPerTurn = 1;
 	[SerializeField] int turnsToIncreaseGrow = 5;
+	[Space]
+	[SerializeField] int pointToUpgradeSingle = 1;
+	[SerializeField] int pointToUpgradeDouble = 3;
+	[SerializeField] int pointToUpgradeTripple = 4;
 
 	int statLose;
 	int statWin;
@@ -66,6 +71,7 @@ public class Game : MonoBehaviour {
 		progressBarLose.onValueUpdated += OnSingleBarFill;
 		progressBarCombo.onValueUpdated += OnSingleBarFill;
 		progressBarLoseGrow.onValueUpdated += OnSingleBarFill;
+		progressBarUpgrade.onValueUpdated += OnSingleBarFill;
 
 		progressBarCombo.onValueUpdated += OnComboBarFill;
 
@@ -80,6 +86,7 @@ public class Game : MonoBehaviour {
 		progressBarLose.Init();
 		progressBarCombo.Init();
 		progressBarLoseGrow.Init();
+		progressBarUpgrade.Init();
 
 		buttonSpin.interactable = true;
 
@@ -142,8 +149,8 @@ public class Game : MonoBehaviour {
 	}
 
 	#region Upgrades
-	public void UpgradeRandom() {
-		circle.UpgradeRandom();
+	public void UpgradeRandom(int level) {
+		circle.UpgradeRandom(level);
 	}
 	#endregion
 
@@ -154,9 +161,7 @@ public class Game : MonoBehaviour {
 		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-
-		//TODO: 
-		Debug.Log("green mod UI");
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroup2() {
@@ -165,9 +170,7 @@ public class Game : MonoBehaviour {
 		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-
-		//TODO: 
-		Debug.Log("green mod UI");
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroupBoth() {
@@ -176,27 +179,28 @@ public class Game : MonoBehaviour {
 		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
 		progressBarWin.UpdateHalfFillValue(statWin + redMod);
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-
-		//TODO: 
-		Debug.Log("green mod UI");
+		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseExitGroup1() {
 		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
+		progressBarUpgrade.ClearHalfFillValue();
 	}
 
 	public void OnMouseExitGroup2() {
 		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
+		progressBarUpgrade.ClearHalfFillValue();
 	}
 
 	public void OnMouseExitGroupBoth() {
 		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
+		progressBarUpgrade.ClearHalfFillValue();
 	}
 	#endregion
 
@@ -285,6 +289,9 @@ public class Game : MonoBehaviour {
 
 		progressBarLoseGrow.ClearHalfFillValue();
 		progressBarLoseGrow.UpdateValue(statTurnsToIncreaseGrow);
+
+		progressBarUpgrade.ClearHalfFillValue();
+		progressBarUpgrade.UpdateValue(lastGreenMod);
 	}
 
 	void OnSelectAnyGroup() {
@@ -323,22 +330,40 @@ public class Game : MonoBehaviour {
 	}
 
 	void OnAllEffectAnimationDone() {
-		if (statWin >= pointToWin) {
-			menuManager.Show(popupWin, false);
-		}
-		else if (statLose >= pointToLose) {
-			menuManager.Show(popupLose, false);
-		}
-		else {
-			if(lastGreenMod != 0) {
-				//TODO: 
-				Debug.Log("green mod");
-				menuManager.Show(popupUpgrade, false);
+		LeanTween.delayedCall(gameObject, 0.5f, () => {
+			if (statWin >= pointToWin) {
+				menuManager.Show(popupWin, false);
+			}
+			else if (statLose >= pointToLose) {
+				menuManager.Show(popupLose, false);
 			}
 			else {
-				AllowSpin();
+				if (lastGreenMod != 0) {
+					progressBarUpgrade.UpdateValueNoCallback(0);
+
+					if (lastGreenMod < pointToUpgradeSingle) {
+						AllowSpin();
+					}
+					else if (lastGreenMod < pointToUpgradeDouble) {
+						popupUpgrade.InitWindow(0);
+						menuManager.Show(popupUpgrade, false);
+					}
+					else if (lastGreenMod < pointToUpgradeTripple) {
+						popupUpgrade.InitWindow(1);
+						menuManager.Show(popupUpgrade, false);
+					}
+					else if (lastGreenMod >= pointToUpgradeTripple) {
+						popupUpgrade.InitWindow(2);
+						menuManager.Show(popupUpgrade, false);
+					}
+
+					lastGreenMod = 0;
+				}
+				else {
+					AllowSpin();
+				}
 			}
-		}
+		});
 	}
 
 	void OnComboBarFill() {
@@ -352,7 +377,7 @@ public class Game : MonoBehaviour {
 	void OnSingleBarFill() {
 		++filledBars;
 
-		if(filledBars == 4) {
+		if(filledBars == 5) {
 			OnAllEffectAnimationDone();
 		}
 	}

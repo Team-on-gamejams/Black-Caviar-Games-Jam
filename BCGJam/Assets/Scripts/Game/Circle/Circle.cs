@@ -101,9 +101,9 @@ public class Circle : MonoBehaviour {
 		}
 	}
 
-	public void UpgradeRandom() {
+	public void UpgradeRandom(int level) {
 		CircleSector sector = sectors.Random();
-		sector.Upgrade(Random.Range(0, 2), Rand());
+		sector.Upgrade(level, Rand());
 
 		CircleSector.SectorType Rand() {
 			int r = Random.Range(0, 4);

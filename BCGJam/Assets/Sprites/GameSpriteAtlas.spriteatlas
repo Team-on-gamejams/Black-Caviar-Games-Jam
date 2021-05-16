@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 3127996
+    totalSpriteSurfaceArea: 3144380
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -66,9 +66,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 46a7cb3b47cf42e4487a5cba066b7b9e, type: 3}
   - {fileID: 21300000, guid: a8f3f9cb48898b44fa62f1c3ff305a1e, type: 3}
   - {fileID: 21300000, guid: 53740b4c911fa7140b6ed1699148db0a, type: 3}
+  - {fileID: 21300000, guid: f3a3330ddc74c2a44a103da92191f489, type: 3}
   - {fileID: 21300000, guid: cd00811d01c67a342ad674023addf99d, type: 3}
   - {fileID: 21300000, guid: 39e13b0ebcc36a146b97eccad0d3bd9d, type: 3}
   - {fileID: 21300000, guid: 5cedc01e96ce29d4989ef1b5c506c024, type: 3}
+  - {fileID: 21300000, guid: 9ceee69e2aa754b41956e0ab4cb4c5d5, type: 3}
   m_PackedSpriteNamesToIndex:
   - ProgressBarPartRedBorder
   - a_yellow
@@ -98,9 +100,11 @@ SpriteAtlas:
   - ParticlesComboReady
   - ProgressBarPartRedFill
   - ProgressBarPartYellowBorder
+  - ProgressBarPartGreenBorder
   - SectorArrowType2
   - red_r
   - blue_r
+  - ProgressBarPartGreenFill
   m_RenderDataMap: {}
   m_Tag: GameSpriteAtlas
   m_IsVariant: 0

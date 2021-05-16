@@ -11,9 +11,15 @@ using Random = UnityEngine.Random;
 public class MenuUpgradePopup : PopupMenuBase {
 	public Action onSelectUpgradeEvent;
 
+	int level;
+
+	public void InitWindow(int _level) {
+		level = _level;
+	}
+
 	public void RandomUpgrade() {
 		MenuManager.HideTopMenu();
-		GameManager.Instance.game.UpgradeRandom();
+		GameManager.Instance.game.UpgradeRandom(level);
 		onSelectUpgradeEvent?.Invoke();
 	}
 }
