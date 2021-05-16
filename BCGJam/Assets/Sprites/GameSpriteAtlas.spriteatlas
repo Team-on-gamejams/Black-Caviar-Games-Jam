@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 1740684
+    totalSpriteSurfaceArea: 2826168
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -55,6 +55,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2dbab42749c5424438459d836d945405, type: 3}
   - {fileID: 21300000, guid: a98eb6e796637d544bcf91a7cad05769, type: 3}
   - {fileID: 21300000, guid: 5ef259885dff06b4995ed6ffa0c2bcd8, type: 3}
+  - {fileID: 21300000, guid: dfede7d8b405f304a823c0d796d4a066, type: 3}
   - {fileID: 21300000, guid: 4a6eaa0911d3a864084373c68d16920f, type: 3}
   - {fileID: 21300000, guid: e7d8ece95c37c7c4a8816faf3e0dea1c, type: 3}
   - {fileID: 21300000, guid: e167342a069fd71479802b21b24aa265, type: 3}
@@ -86,6 +87,7 @@ SpriteAtlas:
   - a_blue
   - CircleSector30Lvl3
   - green_r
+  - CircleSector30Lvl0
   - red
   - ProgressBarPartBlueFill
   - yellow_r
