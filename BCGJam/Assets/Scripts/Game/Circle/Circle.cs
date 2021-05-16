@@ -46,7 +46,7 @@ public class Circle : MonoBehaviour {
 		blueMod = 0;
 		greenMod = 0;
 
-		foreach (var id in arrowsIdGroup1) 
+		foreach (var id in arrowsIdGroup1)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 	}
 
@@ -56,7 +56,7 @@ public class Circle : MonoBehaviour {
 		blueMod = 0;
 		greenMod = 0;
 
-		foreach (var id in arrowsIdGroup2) 
+		foreach (var id in arrowsIdGroup2)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 	}
 
@@ -66,11 +66,23 @@ public class Circle : MonoBehaviour {
 		blueMod = 0;
 		greenMod = 0;
 
-		foreach (var id in arrowsIdGroup1) 
+		foreach (var id in arrowsIdGroup1)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
 
-		foreach (var id in arrowsIdGroup2) 
+		foreach (var id in arrowsIdGroup2)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod);
+	}
+
+	public void StartCatchUpgradeInput() {
+		for (int i = 0; i < sectors.Length; ++i) {
+			sectors[i].GetComponentInChildren<CircleCatchUpgrade>().isCatchInput = true;
+		}
+	}
+
+	public void StopCatchUpgradeInput() {
+		for (int i = 0; i < sectors.Length; ++i) {
+			sectors[i].GetComponentInChildren<CircleCatchUpgrade>().isCatchInput = false;
+		}
 	}
 
 	public void Spin() {
@@ -82,7 +94,7 @@ public class Circle : MonoBehaviour {
 
 		Debug.Log($"Spin by {spinTimer}. Curr zero: {zeroPos}");
 
-		LeanTween.rotateAround(gameObject, Vector3.forward,  degreesRotation, degreesRotation / spinPerSecond)
+		LeanTween.rotateAround(gameObject, Vector3.forward, degreesRotation, degreesRotation / spinPerSecond)
 			.setEase(LeanTweenType.easeOutQuint)
 			.setOnComplete(onSpinEnd);
 
@@ -101,25 +113,7 @@ public class Circle : MonoBehaviour {
 		}
 	}
 
-	public void UpgradeRandom(int level) {
-		CircleSector sector = sectors.Random();
-		sector.Upgrade(level, Rand());
-
-		CircleSector.SectorType Rand() {
-			int r = Random.Range(0, 4);
-
-			switch (r) {
-				case 0:
-					return CircleSector.SectorType.Red;
-				case 1:
-					return CircleSector.SectorType.Green;
-				case 2:
-					return CircleSector.SectorType.Blue;
-				case 3:
-					return CircleSector.SectorType.Yellow;
-				default:
-					return CircleSector.SectorType.Empty;
-			}
-		}
+	public void Upgrade(int id, int level, CircleSector.SectorType type) {
+		sectors[id].Upgrade(level, type);
 	}
 }

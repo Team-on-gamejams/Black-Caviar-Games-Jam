@@ -18,17 +18,13 @@ public class CircleSector : MonoBehaviour {
 
 	[Header("Refs"), Space]
 	[SerializeField] Image sectorContentImage; 
-	[SerializeField] TextMeshProUGUI debugTextField;
 	[SerializeField] LevelData[] levels;
 	[SerializeField] TypeData[] types;
 
 	int currLevel;
 	SectorType currType;
-
-
 	public void Init(int id) {
 		Id = id;
-		debugTextField.text = id.ToString();
 
 		currLevel = initialLevel;
 		currType = initialType;

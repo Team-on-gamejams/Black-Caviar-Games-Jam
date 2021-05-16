@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Game : MonoBehaviour {
 	[Header("Balance"), Space]
+	[SerializeField] float statMultiplierFor2Plus = 2.0f;
 	[SerializeField] int pointToWin = 8;
 	[SerializeField] int pointToLose = 8;
 	[SerializeField] int pointToCombo = 4;
@@ -56,7 +57,7 @@ public class Game : MonoBehaviour {
 	[SerializeField] MenuManager menuManager;
 	[SerializeField] MenuWinPopup popupWin;
 	[SerializeField] MenuLosePopup popupLose;
-	[SerializeField] MenuUpgradePopup popupUpgrade;
+	public MenuUpgradePopup popupUpgrade;
 
 	bool isGroupSelectionShowed;
 	bool isActivateComboBar;
@@ -75,7 +76,8 @@ public class Game : MonoBehaviour {
 
 		progressBarCombo.onValueUpdated += OnComboBarFill;
 
-		popupUpgrade.onSelectUpgradeEvent += AllowSpin;
+		popupUpgrade.onStartSelectUpgradeEvent += StartSelectSectorForUpgrade;
+		popupUpgrade.onSkipUpgradeEvent += AllowSpin;
 
 		GameManager.Instance.game = this;
 	}
@@ -119,10 +121,10 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		statLose -= blueMod;
-		statWin += redMod;
-		statCombo += yellowMod;
-		lastGreenMod = greenMod;
+		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
+		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
+		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
+		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
 	}
 
 	void UseGroup2() {
@@ -130,10 +132,10 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		statLose -= blueMod;
-		statWin += redMod;
-		statCombo += yellowMod;
-		lastGreenMod = greenMod;
+		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
+		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
+		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
+		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
 	}
 
 	void UseGroupBoth() {
@@ -142,44 +144,38 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		statLose -= blueMod;
-		statWin += redMod;
-		statCombo += yellowMod;
-		lastGreenMod = greenMod;
+		statLose -= Mathf.RoundToInt(blueMod * statMultiplierFor2Plus);
+		statWin += Mathf.RoundToInt(redMod * statMultiplierFor2Plus);
+		statCombo += Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus);
+		lastGreenMod = Mathf.RoundToInt(greenMod * statMultiplierFor2Plus);
 	}
-
-	#region Upgrades
-	public void UpgradeRandom(int level) {
-		circle.UpgradeRandom(level);
-	}
-	#endregion
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
-		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-		progressBarUpgrade.UpdateHalfFillValue(greenMod);
+		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
+		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
+		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
 	}
 
 	public void OnMouseOverGroup2() {
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
-		
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
-		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-		progressBarUpgrade.UpdateHalfFillValue(greenMod);
+
+		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
+		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
+		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
 	}
 
 	public void OnMouseOverGroupBoth() {
 		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
-		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-		progressBarUpgrade.UpdateHalfFillValue(greenMod);
+		progressBarLose.UpdateHalfFillValue(statLose - Mathf.RoundToInt(blueMod * statMultiplierFor2Plus) + statLoseGrowPerTurn);
+		progressBarWin.UpdateHalfFillValue(statWin + Mathf.RoundToInt(redMod * statMultiplierFor2Plus));
+		progressBarCombo.UpdateHalfFillValue(statCombo + Mathf.RoundToInt(yellowMod * statMultiplierFor2Plus));
+		progressBarUpgrade.UpdateHalfFillValue(Mathf.RoundToInt(greenMod * statMultiplierFor2Plus));
 	}
 
 	public void OnMouseExitGroup1() {
@@ -384,6 +380,19 @@ public class Game : MonoBehaviour {
 
 	void AllowSpin() {
 		buttonSpin.interactable = true;
+	}
+
+	void StartSelectSectorForUpgrade() {
+		circle.StartCatchUpgradeInput();
+	}
+	
+	public void EndSelectSectorForUpgrade(int id) {
+		circle.StopCatchUpgradeInput();
+
+		circle.Upgrade(id, popupUpgrade.neededLevel, popupUpgrade.neededType);
+
+		popupUpgrade.selectedSector.StopSelectUpgrade();
+		AllowSpin();
 	}
 	#endregion
 }

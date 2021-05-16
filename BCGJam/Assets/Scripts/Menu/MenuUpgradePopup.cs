@@ -9,17 +9,67 @@ using NaughtyAttributes;
 using Random = UnityEngine.Random;
 
 public class MenuUpgradePopup : PopupMenuBase {
-	public Action onSelectUpgradeEvent;
+	public Action onStartSelectUpgradeEvent;
+	public Action onSkipUpgradeEvent;
 
-	int level;
+	[NonSerialized] public int neededLevel;
+	[NonSerialized] public CircleSector.SectorType neededType;
+	[NonSerialized] public CircleSelectUpgrade selectedSector;
+
+	[Header("Refs"), Space] 
+	[SerializeField] CircleSector[] sectorsToSelect;
+	[SerializeField] Transform[] sectorAnchors;
+
+	CircleSector.SectorType[] allTypes;
+	CircleSector.SectorType[] types;
 
 	public void InitWindow(int _level) {
-		level = _level;
+		neededLevel = _level;
+		types = FillTypes();
+
+		for (int i = 0; i < sectorsToSelect.Length; ++i) {
+			sectorsToSelect[i].Upgrade(neededLevel, types[i]);
+		}
+
+		for (int i = 0; i < sectorAnchors.Length; ++i) {
+			sectorsToSelect[i].transform.SetParent(sectorAnchors[i]);
+			sectorsToSelect[i].transform.localPosition = Vector3.zero;
+			sectorsToSelect[i].transform.localEulerAngles = Vector3.zero;
+		}
 	}
 
-	public void RandomUpgrade() {
+	public void OnSelectUpgrade(int id) {
+		neededType = types[id];
+
+		selectedSector = sectorsToSelect[id].GetComponent<CircleSelectUpgrade>();
+		selectedSector.StartSelectUpgrade();
+
 		MenuManager.HideTopMenu();
-		GameManager.Instance.game.UpgradeRandom(level);
-		onSelectUpgradeEvent?.Invoke();
+		onStartSelectUpgradeEvent?.Invoke();
+	}
+
+	public void OnSkipUpgrade() {
+		MenuManager.HideTopMenu();
+		onSkipUpgradeEvent?.Invoke();
+	}
+
+	CircleSector.SectorType[] FillTypes() {
+		if(allTypes == null || allTypes.Length == 0) {
+			allTypes = new CircleSector.SectorType[4];
+			allTypes[0] = CircleSector.SectorType.Yellow;
+			allTypes[1] = CircleSector.SectorType.Green;
+			allTypes[2] = CircleSector.SectorType.Blue;
+			allTypes[3] = CircleSector.SectorType.Red;
+		}
+		else {
+			allTypes.Shuffle();
+		}
+
+		CircleSector.SectorType[] types = new CircleSector.SectorType[sectorsToSelect.Length];
+		for (int i = 0; i < types.Length; ++i) {
+			types[i] = allTypes[i];
+		}
+
+		return types;
 	}
 }
