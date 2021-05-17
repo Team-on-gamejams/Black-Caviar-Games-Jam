@@ -25,8 +25,7 @@ public class CircleSelectUpgrade : MonoBehaviour {
 		isSelectingUpdate = true;
 		backImg.GetComponent<Selectable>().interactable = backImg.raycastTarget = false;
 
-
-		transform.SetParent(backImg.canvas.transform);
+		transform.SetParent(backImg.canvas.transform.Find("SelectUpgradeParent"));
 	}
 
 	public void StopSelectUpgrade() {
