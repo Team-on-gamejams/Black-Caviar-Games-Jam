@@ -23,8 +23,7 @@ public class Circle : MonoBehaviour {
 
 	[Header("Refs"), Space]
 	[SerializeField] CircleSector[] sectors;
-	[SerializeField] CircleArrow[] arrowsGroup1;
-	[SerializeField] CircleArrow[] arrowsGroup2;
+	[SerializeField] CircleArrow[] arrowsGroup1, arrowsGroup2;
 
 	bool isFirstSpin;
 	int zeroPos;
@@ -36,6 +35,11 @@ public class Circle : MonoBehaviour {
 		for (int i = 0; i < sectors.Length; ++i) {
 			sectors[i].Init(i);
 		}
+
+		foreach (var arr in arrowsGroup1) 
+			arr.Init();
+		foreach (var arr in arrowsGroup2) 
+			arr.Init();
 
 		isFirstSpin = true;
 	}
@@ -123,15 +127,43 @@ public class Circle : MonoBehaviour {
 	}
 
 	public void AnimateArrowsGroup1() {
-		foreach (var arr in arrowsGroup1) {
+		foreach (var arr in arrowsGroup1) 
 			arr.PlaySelectAnimation();
-		}
 	}
 
 	public void AnimateArrowsGroup2() {
-		foreach (var arr in arrowsGroup2) {
+		foreach (var arr in arrowsGroup2) 
 			arr.PlaySelectAnimation();
-		}
+	}
+
+	public void StopAnimateArrowsGroup1() {
+		foreach (var arr in arrowsGroup1) 
+			arr.StopSelectAnimation();
+	}
+
+	public void StopAnimateArrowsGroup2() {
+		foreach (var arr in arrowsGroup2) 
+			arr.StopSelectAnimation();
+	}
+
+	public void AnimateSectorsGroup1() {
+		foreach (var id in arrowsIdGroup1)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].ShowAura();
+	}
+
+	public void AnimateSectorsGroup2() {
+		foreach (var id in arrowsIdGroup2)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].ShowAura();
+	}
+
+	public void StopAnimateSectorsGroup1() {
+		foreach (var id in arrowsIdGroup1)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].HideAura();
+	}
+
+	public void StopAnimateSectorsGroup2() {
+		foreach (var id in arrowsIdGroup2)
+			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].HideAura();
 	}
 
 	public void Upgrade(int id, int level, CircleSector.SectorType type) {

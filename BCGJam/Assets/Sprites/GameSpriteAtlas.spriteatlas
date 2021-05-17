@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 3144380
+    totalSpriteSurfaceArea: 7376346
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -41,69 +41,105 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c0508a30bc77e794eb495e792ab1e08b, type: 3}
   - {fileID: 21300000, guid: e5e8f4d09c42e1346abbee9d7144f367, type: 3}
   - {fileID: 21300000, guid: 535f749190074a54781bf2fb9649ecae, type: 3}
+  - {fileID: 21300000, guid: fc4ce2b1e81d34d4483e510813e604b6, type: 3}
+  - {fileID: 21300000, guid: e23970325734430448427b3e5f567e78, type: 3}
   - {fileID: 21300000, guid: 44888d3266076404a9d404bb75b8d11f, type: 3}
+  - {fileID: 21300000, guid: cf5dd0c2a65f5f9439aac5895b3adc25, type: 3}
   - {fileID: 21300000, guid: 68873003a3f6b0c4282627050fa6eb66, type: 3}
   - {fileID: 21300000, guid: 6646750337b516f4d992a9eb78764d40, type: 3}
   - {fileID: 21300000, guid: 11af6d0345542894599273e4ac4e1032, type: 3}
   - {fileID: 21300000, guid: 002bb1132fc44e1479d4adddd4fdee4c, type: 3}
+  - {fileID: 21300000, guid: af2f1323f634a33498a206628594bfcd, type: 3}
   - {fileID: 21300000, guid: f797afa39a684aa40aba793e6d57e2df, type: 3}
   - {fileID: 21300000, guid: 687cfab334334e1498f900efc66bdc8b, type: 3}
   - {fileID: 21300000, guid: f5a6281492b458848b8b2609b2b80382, type: 3}
   - {fileID: 21300000, guid: 1e14d124fc5b4224b8a30a65b66ef055, type: 3}
-  - {fileID: 21300000, guid: ca742484053a6a146ba850ba1784fbb5, type: 3}
+  - {fileID: 21300000, guid: 5be916647778ee54c99bcea94334e187, type: 3}
+  - {fileID: 21300000, guid: 4d54544570f6b354aa88b1ad6fd5854e, type: 3}
+  - {fileID: 21300000, guid: 5ec9ae958c239844d981bfb8347dd6eb, type: 3}
+  - {fileID: 21300000, guid: 40506106266bfcb43a9bab69a612025a, type: 3}
+  - {fileID: 21300000, guid: 75eb2c06657f31b45ad7e3c8a0d99e1e, type: 3}
+  - {fileID: 21300000, guid: aa26ea667dc7500439ba8fd5c5f3e413, type: 3}
   - {fileID: 21300000, guid: d876b0e63aefdc44e8fc0e73e66fca35, type: 3}
   - {fileID: 21300000, guid: 2dbab42749c5424438459d836d945405, type: 3}
+  - {fileID: 21300000, guid: 1c2e4c274fed2534db53c99662c3df9e, type: 3}
   - {fileID: 21300000, guid: a98eb6e796637d544bcf91a7cad05769, type: 3}
   - {fileID: 21300000, guid: 5ef259885dff06b4995ed6ffa0c2bcd8, type: 3}
   - {fileID: 21300000, guid: dfede7d8b405f304a823c0d796d4a066, type: 3}
   - {fileID: 21300000, guid: 4a6eaa0911d3a864084373c68d16920f, type: 3}
+  - {fileID: 21300000, guid: d30dbb893076016499fc1b22f571e9b2, type: 3}
+  - {fileID: 21300000, guid: a498eb89ad57ebe4c99ac43f76ff0b79, type: 3}
   - {fileID: 21300000, guid: e7d8ece95c37c7c4a8816faf3e0dea1c, type: 3}
   - {fileID: 21300000, guid: e167342a069fd71479802b21b24aa265, type: 3}
-  - {fileID: 21300000, guid: d3db987a179ecce4bb49012b138930ca, type: 3}
+  - {fileID: 21300000, guid: 2076a5aaf644ba64aa9444637b5987d5, type: 3}
   - {fileID: 21300000, guid: d24a7aba2c6fb8b45a1ca10aa11ec954, type: 3}
   - {fileID: 21300000, guid: b51a8dda66e824b4ebf0b81a6d61a627, type: 3}
+  - {fileID: 21300000, guid: e3a98bea64e99a54b873002729b16992, type: 3}
   - {fileID: 21300000, guid: 2b3fcfeaf8686864b9637d57bccdf845, type: 3}
   - {fileID: 21300000, guid: 46a7cb3b47cf42e4487a5cba066b7b9e, type: 3}
+  - {fileID: 21300000, guid: 69f3865ba8ec65147aeef8efe5d84556, type: 3}
+  - {fileID: 21300000, guid: ddc6a06b06a72494fa905e97308e5ae4, type: 3}
   - {fileID: 21300000, guid: a8f3f9cb48898b44fa62f1c3ff305a1e, type: 3}
+  - {fileID: 21300000, guid: 3149addbfa98c6a4b9cd7ef2524f9b03, type: 3}
   - {fileID: 21300000, guid: 53740b4c911fa7140b6ed1699148db0a, type: 3}
   - {fileID: 21300000, guid: f3a3330ddc74c2a44a103da92191f489, type: 3}
   - {fileID: 21300000, guid: cd00811d01c67a342ad674023addf99d, type: 3}
+  - {fileID: 21300000, guid: 7bf3912db6fc9bb448f5290c402cd60a, type: 3}
   - {fileID: 21300000, guid: 39e13b0ebcc36a146b97eccad0d3bd9d, type: 3}
   - {fileID: 21300000, guid: 5cedc01e96ce29d4989ef1b5c506c024, type: 3}
+  - {fileID: 21300000, guid: 4592472e536407f449143b39cccf76fb, type: 3}
   - {fileID: 21300000, guid: 9ceee69e2aa754b41956e0ab4cb4c5d5, type: 3}
   m_PackedSpriteNamesToIndex:
   - ProgressBarPartRedBorder
   - a_yellow
   - yellow
+  - big_eye
+  - bronzebig3
   - ProgressBarPartYellowFill
+  - redbronzebig2
   - CircleBack
   - green
   - ButtonSpin
   - ButtonUseCombo
+  - blue_50
   - CircleSector30Lvl2
   - ButtonSelectArrowGroup
   - SectorArrowType1
   - a_green
-  - DemonHeader
+  - bronze2
+  - redbronze1
+  - big_eye1
+  - bronze1
+  - bronzemultibig1
+  - redbronze2
   - blue
   - a_blue
+  - red_50
   - CircleSector30Lvl3
   - green_r
   - CircleSector30Lvl0
   - red
+  - Tentacle
+  - bronzebig2
   - ProgressBarPartBlueFill
   - yellow_r
-  - PoliceHeader
+  - redbronzebig3
   - ProgressBarPartBlueBorder
   - a_red
+  - bronzemultibig2
   - CircleSector30Lvl1
   - ParticlesComboReady
+  - redbronzebig1
+  - bronzemultibig3
   - ProgressBarPartRedFill
+  - Foreground
   - ProgressBarPartYellowBorder
   - ProgressBarPartGreenBorder
   - SectorArrowType2
+  - Background
   - red_r
   - blue_r
+  - bronzebig1
   - ProgressBarPartGreenFill
   m_RenderDataMap: {}
   m_Tag: GameSpriteAtlas

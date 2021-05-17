@@ -119,6 +119,7 @@ public class Game : MonoBehaviour {
 
 	void UseGroup1() {
 		circle.AnimateArrowsGroup1();
+		circle.AnimateSectorsGroup1();
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -130,6 +131,7 @@ public class Game : MonoBehaviour {
 
 	void UseGroup2() {
 		circle.AnimateArrowsGroup2();
+		circle.AnimateSectorsGroup2();
 
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -141,7 +143,10 @@ public class Game : MonoBehaviour {
 
 	void UseGroupBoth() {
 		circle.AnimateArrowsGroup1();
+		circle.AnimateSectorsGroup1();
+
 		circle.AnimateArrowsGroup2();
+		circle.AnimateSectorsGroup2();
 
 		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -153,6 +158,9 @@ public class Game : MonoBehaviour {
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
+		circle.AnimateArrowsGroup1();
+		circle.AnimateSectorsGroup1();
+
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		if(blueCount > 1) {
@@ -183,6 +191,9 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseOverGroup2() {
+		circle.AnimateArrowsGroup2();
+		circle.AnimateSectorsGroup2();
+
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		if (blueCount > 1) {
@@ -213,7 +224,13 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseOverGroupBoth() {
+		circle.AnimateArrowsGroup1();
+		circle.AnimateArrowsGroup2();
+
 		if (isGroupSelectionShowed) {
+			circle.AnimateSectorsGroup1();
+			circle.AnimateSectorsGroup2();
+
 			circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 			if (blueCount > 1) {
@@ -249,6 +266,11 @@ public class Game : MonoBehaviour {
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
 		progressBarUpgrade.ClearHalfFillValue();
+
+		circle.StopAnimateArrowsGroup1();
+		circle.StopAnimateArrowsGroup2();
+		circle.StopAnimateSectorsGroup1();
+		circle.StopAnimateSectorsGroup2();
 	}
 
 	public void OnMouseExitGroup2() {
@@ -256,6 +278,11 @@ public class Game : MonoBehaviour {
 		progressBarWin.ClearHalfFillValue();
 		progressBarCombo.ClearHalfFillValue();
 		progressBarUpgrade.ClearHalfFillValue();
+
+		circle.StopAnimateArrowsGroup1();
+		circle.StopAnimateArrowsGroup2();
+		circle.StopAnimateSectorsGroup1();
+		circle.StopAnimateSectorsGroup2();
 	}
 
 	public void OnMouseExitGroupBoth() {
@@ -265,6 +292,11 @@ public class Game : MonoBehaviour {
 			progressBarCombo.ClearHalfFillValue();
 			progressBarUpgrade.ClearHalfFillValue();
 		}
+
+		circle.StopAnimateArrowsGroup1();
+		circle.StopAnimateArrowsGroup2();
+		circle.StopAnimateSectorsGroup1();
+		circle.StopAnimateSectorsGroup2();
 	}
 	#endregion
 
@@ -398,6 +430,11 @@ public class Game : MonoBehaviour {
 	}
 
 	void OnAllEffectAnimationDone() {
+		circle.StopAnimateArrowsGroup1();
+		circle.StopAnimateArrowsGroup2();
+		circle.StopAnimateSectorsGroup1();
+		circle.StopAnimateSectorsGroup2();
+
 		LeanTween.delayedCall(gameObject, 0.5f, () => {
 			if (statWin >= pointToWin) {
 				menuManager.Show(popupWin, false);

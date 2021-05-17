@@ -9,37 +9,37 @@ using NaughtyAttributes;
 using Random = UnityEngine.Random;
 
 public class CircleArrow : MonoBehaviour {
-	[Header("Animation"), Space]
-	[SerializeField] Vector2 stayPos = new Vector2(0, -258);
-	[SerializeField] Vector2 clickPos = new Vector2(0, -200);
-
 	[Header("Refs"), Space]
 	[SerializeField] RectTransform rt;
+	[SerializeField] Image activeImage;
+	[SerializeField] Image inactiveImage;
 
 #if UNITY_EDITOR
 	private void OnValidate() {
 		if (!rt)
 			rt = GetComponent<RectTransform>();
+		if (!activeImage)
+			activeImage = GetComponentInChildren<Image>();
+		if (!inactiveImage)
+			inactiveImage = GetComponent<Image>();
 	}
 #endif
 
+	public void Init() {
+		activeImage.color = activeImage.color.SetA(0.0f);
+	}
+
 	public void PlaySelectAnimation() {
-		LeanTween.cancel(gameObject, false);
+		LeanTween.cancel(activeImage.gameObject, false);
 
-		LeanTween.value(gameObject, rt.anchoredPosition, clickPos, 0.2f)
-		.setEase(LeanTweenType.easeInOutBack)
-		.setOnUpdate((Vector2 val)=> {
-			rt.anchoredPosition = val;
-		})
-		.setOnComplete(() => {
-			LeanTween.value(gameObject, rt.anchoredPosition, stayPos, 0.2f)
-			.setEase(LeanTweenType.easeOutBack)
-			.setOnUpdate((Vector2 val) => {
-				rt.anchoredPosition = val;
-			})
-			.setOnComplete(() => {
+		LeanTweenEx.ChangeAlpha(activeImage, 1.0f, 0.2f)
+		.setEase(LeanTweenType.easeInOutSine);
+	}
 
-			});
-		});
+	public void StopSelectAnimation() {
+		LeanTween.cancel(activeImage.gameObject, false);
+
+		LeanTweenEx.ChangeAlpha(activeImage, 0.0f, 0.2f)
+		.setEase(LeanTweenType.easeInOutSine);
 	}
 }

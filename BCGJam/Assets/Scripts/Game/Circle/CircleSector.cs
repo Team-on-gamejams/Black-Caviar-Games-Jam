@@ -20,6 +20,7 @@ public class CircleSector : MonoBehaviour {
 	[SerializeField] Image sectorContentImage; 
 	[SerializeField] LevelData[] levels;
 	[SerializeField] TypeData[] types;
+	[SerializeField] AuraData[] auras;
 
 	int currLevel;
 	SectorType currType;
@@ -28,6 +29,10 @@ public class CircleSector : MonoBehaviour {
 
 		currLevel = initialLevel;
 		currType = initialType;
+
+		foreach (var aura in auras) {
+			aura.DeactivateForce();
+		}
 
 		RecalcVisuals();
 	}
@@ -72,6 +77,21 @@ public class CircleSector : MonoBehaviour {
 		currType = type;
 
 		RecalcVisuals();
+	}
+
+	public void ShowAura() {
+		foreach (var aura in auras) {
+			if(aura.level == currLevel && aura.type == currType)
+				aura.Activate();
+			else
+				aura.Deactivate();
+		}
+	}
+
+	public void HideAura() {
+		foreach (var aura in auras) {
+			aura.Deactivate();
+		}
 	}
 
 	void RecalcVisuals() {
@@ -123,6 +143,28 @@ public class CircleSector : MonoBehaviour {
 
 		public void Deactivate() {
 			sector.gameObject.SetActive(false);
+		}
+	}
+
+	[Serializable]
+	public struct AuraData {
+		public int level;
+		public SectorType type;
+		public Transform aura;
+
+		public void Activate() {
+			LeanTween.cancel(aura.gameObject);
+			LeanTweenEx.ChangeAlpha(aura.GetComponent<Image>(), 1.0f, 0.2f);
+		}
+
+		public void Deactivate() {
+			LeanTween.cancel(aura.gameObject);
+			LeanTweenEx.ChangeAlpha(aura.GetComponent<Image>(), 0.0f, 0.2f);
+		}
+
+		public void DeactivateForce() {
+			LeanTween.cancel(aura.gameObject);
+			aura.GetComponent<Image>().color = Color.white.SetA(0.0f);
 		}
 	}
 }

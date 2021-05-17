@@ -13,6 +13,7 @@ public class EyeFollowMouse : MonoBehaviour {
 	[Header("Data"), Space]
 	[SerializeField] Transform center;
 	[SerializeField] float radius = 6.0f;
+	[SerializeField] bool keepZeroRotation = true;
 
 	void Update() {
 		Vector3 mousePosScreen = Mouse.current.position.ReadValue();
@@ -20,6 +21,8 @@ public class EyeFollowMouse : MonoBehaviour {
 		Vector3 offset = mousePosScreen - center.transform.position;
 
 		transform.position = center.position + offset.normalized * Mathf.Lerp(0, radius, offset.magnitude / 500f);
-		transform.eulerAngles = Vector3.zero;
+
+		if(keepZeroRotation)
+			transform.eulerAngles = Vector3.zero;
 	}
 }
