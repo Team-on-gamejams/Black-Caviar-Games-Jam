@@ -22,8 +22,9 @@ public class CircleSector : MonoBehaviour {
 	[SerializeField] TypeData[] types;
 	[SerializeField] AuraData[] auras;
 
-	int currLevel;
-	SectorType currType;
+	[NonSerialized] public int currLevel;
+	[NonSerialized] public SectorType currType;
+
 	public void Init(int id) {
 		Id = id;
 
@@ -85,6 +86,13 @@ public class CircleSector : MonoBehaviour {
 				aura.Activate();
 			else
 				aura.Deactivate();
+			aura.aura.GetComponent<ScaleUpDown>().enabled = false;
+		}
+	}
+
+	public void ShowAuraCombo() {
+		foreach (var aura in auras) {
+			aura.aura.GetComponent<ScaleUpDown>().enabled = true;
 		}
 	}
 

@@ -146,6 +146,81 @@ public class Circle : MonoBehaviour {
 			arr.StopSelectAnimation();
 	}
 
+	public void AnimateSectorsGroupsForCombo(bool isBoth) {
+		int redMod = 0;
+		int yellowMod = 0;
+		int blueMod = 0;
+		int greenMod = 0;
+		int redCount = 0;
+		int blueCount = 0;
+
+		if (isBoth) {
+			foreach (var id in arrowsIdGroup1)
+				sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, ref redCount, ref blueCount);
+
+			foreach (var id in arrowsIdGroup2)
+				sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, ref redCount, ref blueCount);
+
+			foreach (var id in arrowsIdGroup1) {
+				CircleSector sector = sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)];
+
+				if (redCount >= 2 && sector.currType == CircleSector.SectorType.Red) {
+					sector.ShowAuraCombo();
+				}
+				if (blueCount >= 2 && sector.currType == CircleSector.SectorType.Blue) {
+					sector.ShowAuraCombo();
+				}
+			}
+
+			foreach (var id in arrowsIdGroup2) {
+				CircleSector sector = sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)];
+
+				if (redCount >= 2 && sector.currType == CircleSector.SectorType.Red) {
+					sector.ShowAuraCombo();
+				}
+				if (blueCount >= 2 && sector.currType == CircleSector.SectorType.Blue) {
+					sector.ShowAuraCombo();
+				}
+			}
+		}
+		else {
+			foreach (var id in arrowsIdGroup1)
+				sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, ref redCount, ref blueCount);
+
+			foreach (var id in arrowsIdGroup1) {
+				CircleSector sector = sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)];
+
+				if(redCount >= 2  && sector.currType == CircleSector.SectorType.Red) {
+					sector.ShowAuraCombo();
+				}
+				if (blueCount >= 2 && sector.currType == CircleSector.SectorType.Blue) {
+					sector.ShowAuraCombo();
+				}
+			}
+
+			redMod = 0;
+			yellowMod = 0;
+			blueMod = 0;
+			greenMod = 0;
+			redCount = 0;
+			blueCount = 0;
+
+			foreach (var id in arrowsIdGroup2)
+				sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].AddModifiers(ref redMod, ref yellowMod, ref blueMod, ref greenMod, ref redCount, ref blueCount);
+
+			foreach (var id in arrowsIdGroup2) {
+				CircleSector sector = sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)];
+
+				if (redCount >= 2 && sector.currType == CircleSector.SectorType.Red) {
+					sector.ShowAuraCombo();
+				}
+				if (blueCount >= 2 && sector.currType == CircleSector.SectorType.Blue) {
+					sector.ShowAuraCombo();
+				}
+			}
+		}
+	}
+
 	public void AnimateSectorsGroup1() {
 		foreach (var id in arrowsIdGroup1)
 			sectors[(int)Mathf.Repeat(zeroPos + id, sectors.Length)].ShowAura();

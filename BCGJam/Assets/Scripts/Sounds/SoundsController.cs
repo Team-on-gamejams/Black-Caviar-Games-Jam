@@ -40,6 +40,7 @@ public class SoundsController : MonoBehaviour {
 
 	[Header("Refs"), Space]
 	[SerializeField] Game game;
+	[SerializeField] MusicLooper looper;
 
 	private void Awake() {
 		game.onMouseOverGroup1 += MouseOverBronze.Play;
@@ -70,7 +71,13 @@ public class SoundsController : MonoBehaviour {
 
 		game.yellowComboReady += EventYellowComboReady.Play;
 
-		game.winEvent += EventWin.Play;
-		game.loseEvent += EventLose.Play;
+		game.winEvent += () => {
+			looper.StopPlay(0.0f);
+			EventWin.Play();
+		};
+		game.loseEvent += () => {
+			looper.StopPlay(2.0f);
+			EventLose.Play();
+		};
 	}
 }

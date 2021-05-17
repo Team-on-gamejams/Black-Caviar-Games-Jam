@@ -46,6 +46,16 @@ public class MusicLooper : MonoBehaviour {
 		});
 	}
 
+	public void StopPlay(float time) {
+		LeanTween.value(gameObject, 1f, 0f, time)
+		.setOnUpdate((float t)=> {
+			for (int i = 0; i < volumes.Length; ++i) {
+				volumes[i] = t;
+				audioData[i].source.volume = t;
+			}
+		});
+	}
+
 	[Serializable]
 	public struct AudioData {
 		public int minNeededLevel;

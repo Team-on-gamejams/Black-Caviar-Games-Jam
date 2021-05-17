@@ -121,6 +121,7 @@ public class Game : MonoBehaviour {
 	
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
+		circle.AnimateSectorsGroupsForCombo(false);
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -143,6 +144,7 @@ public class Game : MonoBehaviour {
 		
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
+		circle.AnimateSectorsGroupsForCombo(false);
 
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -169,6 +171,8 @@ public class Game : MonoBehaviour {
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
 
+		circle.AnimateSectorsGroupsForCombo(true);
+
 		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		statLose -= blueMod;
@@ -191,6 +195,8 @@ public class Game : MonoBehaviour {
 		
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
+
+		circle.AnimateSectorsGroupsForCombo(false);
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -226,6 +232,7 @@ public class Game : MonoBehaviour {
 		
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
+		circle.AnimateSectorsGroupsForCombo(false);
 
 		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
@@ -265,6 +272,8 @@ public class Game : MonoBehaviour {
 		if (isGroupSelectionShowed) {
 			circle.AnimateSectorsGroup1();
 			circle.AnimateSectorsGroup2();
+
+			circle.AnimateSectorsGroupsForCombo(true);
 
 			circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
