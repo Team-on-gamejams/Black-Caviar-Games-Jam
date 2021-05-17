@@ -24,6 +24,7 @@ public class CircleCatchUpgrade : MonoBehaviour {
 			Debug.Log("Show popup");
 		}
 		else {
+			GameManager.Instance.game.upgradeMagnet?.Invoke();
 			GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo = transform;
 		}
 	}

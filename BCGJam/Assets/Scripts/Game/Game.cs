@@ -130,8 +130,6 @@ public class Game : MonoBehaviour {
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
-		if (greenMod >= 1)
-			greenBarRise?.Invoke();
 
 		if (greenMod >= 2)
 			GameManager.Instance.game.upgradeSectorIn?.Invoke();
@@ -154,8 +152,6 @@ public class Game : MonoBehaviour {
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
-		if (greenMod >= 1)
-			greenBarRise?.Invoke();
 
 		if (greenMod >= 2)
 			GameManager.Instance.game.upgradeSectorIn?.Invoke();
@@ -181,8 +177,6 @@ public class Game : MonoBehaviour {
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
-		if (greenMod >= 1)
-			greenBarRise?.Invoke();
 
 		if (greenMod >= 2)
 			GameManager.Instance.game.upgradeSectorIn?.Invoke();
@@ -560,13 +554,13 @@ public class Game : MonoBehaviour {
 	public Action onSpinStart;
 	public Action onSpinEnd;
 
+	public Action upgradeMagnet;
 	public Action upgradeSectorIn;
 	public Action upgradeSectorOut;
 
 	public Action blueBarRise;
 	public Action redBarRise;
 	public Action yellowBarRise;
-	public Action greenBarRise;
 
 	public Action yellowComboReady;
 

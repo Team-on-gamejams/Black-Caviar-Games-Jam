@@ -23,6 +23,8 @@ public class MusicLooper : MonoBehaviour {
 		for(int i = 0; i < volumes.Length; ++i) {
 			volumes[i] = audioData[i].source.volume;
 			audioData[i].source.volume = 0.0f;
+			audioData[i].source.loop = true;
+			audioData[i].source.Play();
 		}
 
 		StartPlay(audioData[0], volumes[0]);
@@ -31,30 +33,16 @@ public class MusicLooper : MonoBehaviour {
 	void StartPlay(AudioData data, float volume) {
 		LeanTween.cancel(gameObject);
 
-		data.source.volume = 0.0f;
+		data.source.volume = volume;
 
-		LeanTween.value(gameObject, data.source.volume, volume, fadeTime)
-			.setEase(LeanTweenType.easeInOutSine)
-			.setOnStart(data.source.Play)
-			.setOnUpdate((float v) => {
-				data.source.volume = v;
-			});
-
-		LeanTween.delayedCall(data.source.clip.length - fadeTime - fadeTime, () => {
-			LeanTween.value(gameObject, data.source.volume, 0.0f, fadeTime)
-				.setEase(LeanTweenType.easeInOutSine)
-				.setOnUpdate((float v) => {
-					data.source.volume = v;
-				})
-				.setOnComplete(()=> {
-
-					for(int i = audioData.Length - 1; i >= 1; --i) {
-						if(audioData[i].minNeededLevel <= game.GetRedFill()) {
-							StartPlay(audioData[i], volumes[i]);
-							break;
-						}
-					}
-				});
+		LeanTween.delayedCall(data.source.clip.length, () => {
+			for (int i = audioData.Length - 1; i >= 1; --i) {
+				if (audioData[i].minNeededLevel <= game.GetRedFill()) {
+					data.source.volume = 0.0f;
+					StartPlay(audioData[i], volumes[i]);
+					break;
+				}
+			}
 		});
 	}
 

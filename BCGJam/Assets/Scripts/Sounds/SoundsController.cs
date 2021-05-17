@@ -25,6 +25,7 @@ public class SoundsController : MonoBehaviour {
 	[Space]
 	[SerializeField] AudioSource EventUpgradeSectorIn;
 	[SerializeField] AudioSource EventUpgradeSectorOut;
+	[SerializeField] AudioSource EventUpgradeMagnet;
 
 	[Space]
 	[Space]
@@ -33,8 +34,6 @@ public class SoundsController : MonoBehaviour {
 	[Space]
 	[SerializeField] AudioSource EventYellowRise;
 	[SerializeField] AudioSource EventYellowComboReady;
-	[Space]
-	[SerializeField] AudioSource EventGreenRise;
 	[Space]
 	[SerializeField] AudioSource EventWin;
 	[SerializeField] AudioSource EventLose;
@@ -63,11 +62,11 @@ public class SoundsController : MonoBehaviour {
 
 		game.upgradeSectorIn += EventUpgradeSectorIn.Play;
 		game.upgradeSectorOut += EventUpgradeSectorOut.Play;
+		game.upgradeMagnet += EventUpgradeMagnet.Play;
 
 		game.blueBarRise += ()=> EventBlueBarRise.Random().Play();
 		game.redBarRise += ()=> EventRedBarRise.Random().Play();
 		game.yellowBarRise += EventYellowRise.Play;
-		//game.greenBarRise += EventGreenRise.Play;
 
 		game.yellowComboReady += EventYellowComboReady.Play;
 
