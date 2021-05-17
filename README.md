@@ -60,7 +60,7 @@ Video about TriJam from Rocknight Studios: https://www.youtube.com/watch?v=6PysB
 # Used assets
  * Unity game template - https://github.com/Team-on/UnityGameTemplate
  * Assets from template - https://github.com/Team-on/UnityGameTemplate/wiki/Used-assets
- * link - where used
+ * v_Mouth Breather BB - game font
  
  
 # Downloads and Links
