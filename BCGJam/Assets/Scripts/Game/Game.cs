@@ -52,6 +52,9 @@ public class Game : MonoBehaviour {
 	[Space]
 	[SerializeField] ShowMouseTooltip defeatBarTooltip;
 	[SerializeField] [Multiline(3)] string defeatBarTooltipText;
+	[Space]
+	[SerializeField] Animator tentacle1;
+	[SerializeField] Animator tentacle2;
 
 	[Header("Refs - menu"), Space]
 	[SerializeField] MenuManager menuManager;
@@ -333,10 +336,16 @@ public class Game : MonoBehaviour {
 
 	public void OnMouseOverEye() {
 		onMouseOverEye?.Invoke();
+
+		tentacle1.SetBool("IsGrab", true);
+		tentacle2.SetBool("IsGrab", true);
 	}
 
 	public void OnMouseExitEye() {
 		onMouseExitEye?.Invoke();
+
+		tentacle1.SetBool("IsGrab", false);
+		tentacle2.SetBool("IsGrab", false);
 
 	}
 	#endregion
@@ -350,7 +359,28 @@ public class Game : MonoBehaviour {
 
 		filledBars = 0;
 
-		circle.Spin();
+		if(tentacle1.GetCurrentAnimatorStateInfo(0) && tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) {
+			tentacle1.SetTrigger("IsSpin");
+			tentacle2.SetTrigger("IsSpin");
+			tentacle1.SetBool("IsGrab", false);
+			tentacle2.SetBool("IsGrab", false);
+
+			LeanTween.delayedCall(gameObject, 0.02f, () => {
+				circle.Spin();
+			});
+		}
+		else {
+			LeanTween.delayedCall(gameObject, 0.5f, () => {
+				tentacle1.SetTrigger("IsSpin");
+				tentacle2.SetTrigger("IsSpin");
+				tentacle1.SetBool("IsGrab", false);
+				tentacle2.SetBool("IsGrab", false);
+
+				LeanTween.delayedCall(gameObject, 0.02f, () => {
+					circle.Spin();
+				});
+			});
+		}
 	}
 
 	public void OnClickSelectGroup1() {
@@ -449,8 +479,14 @@ public class Game : MonoBehaviour {
 		foreach (var b in buttonsSelectGroup) {
 			b.image.raycastTarget = b.interactable = true;
 		}
-		if (statCombo == pointToCombo) 
+
+		if (statCombo == pointToCombo && useComboButton.image.raycastTarget == false) {
+			yellowComboReady?.Invoke();
+
 			useComboButton.image.raycastTarget = useComboButton.interactable = true;
+
+			LeanTweenEx.ChangeAlpha(auraYellow, 1.0f, 0.2f);
+		}
 
 		isGroupSelectionShowed = true;
 		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
@@ -502,14 +538,14 @@ public class Game : MonoBehaviour {
 	}
 
 	void OnComboBarFill() {
-		if (statCombo == pointToCombo) {
-			if(useComboButton.image.raycastTarget == false)
-				yellowComboReady?.Invoke();
+		//if (statCombo == pointToCombo) {
+		//	if(useComboButton.image.raycastTarget == false)
+		//		yellowComboReady?.Invoke();
 
-			useComboButton.image.raycastTarget = useComboButton.interactable = true;
+		//	useComboButton.image.raycastTarget = useComboButton.interactable = true;
 
-			LeanTweenEx.ChangeAlpha(auraYellow, 1.0f, 0.2f);
-		}
+		//	LeanTweenEx.ChangeAlpha(auraYellow, 1.0f, 0.2f);
+		//}
 	}
 
 	void OnSingleBarFill() {

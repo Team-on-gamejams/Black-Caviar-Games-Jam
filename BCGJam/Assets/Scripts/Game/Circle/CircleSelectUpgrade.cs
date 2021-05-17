@@ -43,9 +43,9 @@ public class CircleSelectUpgrade : MonoBehaviour {
 		if (isSelectingUpdate) {
 			transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * scaleMod, Time.deltaTime * 5);
 
-			transform.position = Vector3.Lerp(transform.position, anchorTo != null ? anchorTo.position : (Vector3)Mouse.current.position.ReadValue(), Time.deltaTime * 5);
+			transform.position = Vector3.Lerp(transform.position, anchorTo != null ? TemplateGameManager.Instance.Camera.WorldToScreenPoint(anchorTo.position) : (Vector3)Mouse.current.position.ReadValue(), Time.deltaTime * 5);
 
-			Vector3 vectorToTarget = circleCenter.position - transform.position;
+			Vector3 vectorToTarget = TemplateGameManager.Instance.Camera.WorldToScreenPoint(circleCenter.position) - transform.position;
 			float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg + 180;
 			Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 			transform.rotation = Quaternion.Lerp(transform.rotation, q, Time.deltaTime * 5);

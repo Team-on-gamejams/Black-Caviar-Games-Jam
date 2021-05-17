@@ -401,6 +401,7 @@ MonoBehaviour:
   center: {fileID: 5916479128149802846}
   radius: 10
   keepZeroRotation: 1
+  useWorldSpace: 1
 --- !u!1 &5916479128811815733
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +682,7 @@ MonoBehaviour:
   center: {fileID: 5916479128149802846}
   radius: 10
   keepZeroRotation: 1
+  useWorldSpace: 1
 --- !u!1 &5916479129958073170
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +774,7 @@ MonoBehaviour:
   center: {fileID: 5916479128149802846}
   radius: 10
   keepZeroRotation: 1
+  useWorldSpace: 1
 --- !u!1 &5916479129978592053
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,3 +866,4 @@ MonoBehaviour:
   center: {fileID: 5916479128149802846}
   radius: 10
   keepZeroRotation: 1
+  useWorldSpace: 1
