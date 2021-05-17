@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 public class TemplateSplashScreenAnyKey : MenuBase {
+	public Action onShow;
+
 	[Header("Timings"), Space]
 	[SerializeField] float timeToShowAnyKeyText = 2.0f;
 	[SerializeField] float timeToCanSkip = 0.5f;
@@ -32,6 +34,8 @@ public class TemplateSplashScreenAnyKey : MenuBase {
 	internal override void Show(bool isForce) {
 		enabled = true;
 		base.Show(isForce);
+
+		onShow?.Invoke();
 	}
 
 	private void Update() {

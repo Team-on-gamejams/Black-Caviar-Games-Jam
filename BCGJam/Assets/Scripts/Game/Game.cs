@@ -34,8 +34,7 @@ public class Game : MonoBehaviour {
 
 
 	[Header("Particles"), Space]
-	[SerializeField] ParticleSystem particlesWhenComboFull;
-	[SerializeField] ParticleSystem[] particlesWhenComboUsed;
+	[SerializeField] Image auraYellow;
 
 	[Header("Refs"), Space]
 	[SerializeField] Button buttonSpin;
@@ -61,7 +60,6 @@ public class Game : MonoBehaviour {
 	public MenuUpgradePopup popupUpgrade;
 
 	bool isGroupSelectionShowed;
-	bool isActivateComboBar;
 	int lastGreenMod;
 
 	private void Awake() {
@@ -112,12 +110,12 @@ public class Game : MonoBehaviour {
 
 		isGroupSelectionShowed = false;
 
-		particlesWhenComboFull.Stop();
-		foreach (var part in particlesWhenComboUsed) 
-			part.Stop();
+		auraYellow.color = auraYellow.color.SetA(0.0f);
 	}
 
 	void UseGroup1() {
+		onMouseClickGroup1?.Invoke();
+	
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 
@@ -127,9 +125,20 @@ public class Game : MonoBehaviour {
 		statWin += redMod;
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
+
+		if(blueMod + statLoseGrowPerTurn >= 1)
+			blueBarRise?.Invoke();
+		if (redMod >= 1)
+			redBarRise?.Invoke();
+		if (yellowMod >= 1)
+			yellowBarRise?.Invoke();
+		if (greenMod >= 1)
+			greenBarRise?.Invoke();
 	}
 
 	void UseGroup2() {
+		onMouseClickGroup2?.Invoke();
+		
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
 
@@ -139,9 +148,20 @@ public class Game : MonoBehaviour {
 		statWin += redMod;
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
+
+		if (blueMod + statLoseGrowPerTurn >= 1)
+			blueBarRise?.Invoke();
+		if (redMod >= 1)
+			redBarRise?.Invoke();
+		if (yellowMod >= 1)
+			yellowBarRise?.Invoke();
+		if (greenMod >= 1)
+			greenBarRise?.Invoke();
 	}
 
 	void UseGroupBoth() {
+		onMouseClickGroupBoth?.Invoke();
+		
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 
@@ -154,10 +174,21 @@ public class Game : MonoBehaviour {
 		statWin += redMod;
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
+
+		if (blueMod + statLoseGrowPerTurn >= 1)
+			blueBarRise?.Invoke();
+		if (redMod >= 1)
+			redBarRise?.Invoke();
+		if (yellowMod >= 1)
+			yellowBarRise?.Invoke();
+		if (greenMod >= 1)
+			greenBarRise?.Invoke();
 	}
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
+		onMouseOverGroup1?.Invoke();
+		
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 
@@ -191,6 +222,8 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseOverGroup2() {
+		onMouseOverGroup2?.Invoke();
+		
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
 
@@ -224,6 +257,8 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseOverGroupBoth() {
+		onMouseOverGroupBoth?.Invoke();
+		
 		circle.AnimateArrowsGroup1();
 		circle.AnimateArrowsGroup2();
 
@@ -298,10 +333,22 @@ public class Game : MonoBehaviour {
 		circle.StopAnimateSectorsGroup1();
 		circle.StopAnimateSectorsGroup2();
 	}
+
+	public void OnMouseOverEye() {
+		onMouseOverEye?.Invoke();
+	}
+
+	public void OnMouseExitEye() {
+		onMouseExitEye?.Invoke();
+
+	}
 	#endregion
 
 	#region Button Callbacks
 	public void OnClickSpin() {
+		onMouseClickEye?.Invoke();
+		onSpinStart?.Invoke();
+
 		buttonSpin.interactable = false;
 
 		filledBars = 0;
@@ -323,7 +370,7 @@ public class Game : MonoBehaviour {
 
 	public void OnClickComboBar() {
 		useComboButton.image.raycastTarget = useComboButton.interactable = false;
-		particlesWhenComboFull.Stop();
+		LeanTweenEx.ChangeAlpha(auraYellow, 0.0f, 0.2f);
 
 		if (isGroupSelectionShowed) {
 			OnSelectAnyGroup();
@@ -332,20 +379,9 @@ public class Game : MonoBehaviour {
 
 			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
 		}
-		else {
-			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
-			
-			isActivateComboBar = true;
-
-			foreach (var part in particlesWhenComboUsed)
-				part.Play();
-		}
 	}
 
 	void AfterUseGroup() {
-		foreach (var part in particlesWhenComboUsed)
-			part.Stop();
-
 		if (statWin >= pointToWin) {
 			statWin = pointToWin;
 		}
@@ -398,6 +434,7 @@ public class Game : MonoBehaviour {
 		foreach (var b in buttonsSelectGroup) {
 			b.image.raycastTarget = b.interactable = false;
 		}
+		useComboButton.image.raycastTarget = useComboButton.interactable = false;
 
 		isGroupSelectionShowed = false;
 
@@ -409,24 +446,17 @@ public class Game : MonoBehaviour {
 
 	#region Callbacks
 	void OnSpinEnd() {
-		if (isActivateComboBar) {
-			isActivateComboBar = false;
+		onSpinEnd?.Invoke();
 
-			OnSelectAnyGroup();
-			UseGroupBoth();
-			AfterUseGroup();
-
-			progressBarCombo.UpdateValueNoCallback(statCombo = 0);
+		foreach (var b in buttonsSelectGroup) {
+			b.image.raycastTarget = b.interactable = true;
 		}
-		else {
-			foreach (var b in buttonsSelectGroup) {
-				b.image.raycastTarget = b.interactable = true;
-			}
+		if (statCombo == pointToCombo) 
+			useComboButton.image.raycastTarget = useComboButton.interactable = true;
 
-			isGroupSelectionShowed = true;
-			progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
-			progressBarLoseGrow.UpdateHalfFillValue(statTurnsToIncreaseGrow + 1);
-		}
+		isGroupSelectionShowed = true;
+		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
+		progressBarLoseGrow.UpdateHalfFillValue(statTurnsToIncreaseGrow + 1);
 	}
 
 	void OnAllEffectAnimationDone() {
@@ -438,9 +468,11 @@ public class Game : MonoBehaviour {
 		LeanTween.delayedCall(gameObject, 0.5f, () => {
 			if (statWin >= pointToWin) {
 				menuManager.Show(popupWin, false);
+				winEvent?.Invoke();
 			}
 			else if (statLose >= pointToLose) {
 				menuManager.Show(popupLose, false);
+				loseEvent?.Invoke();
 			}
 			else {
 				if (lastGreenMod != 0) {
@@ -473,9 +505,12 @@ public class Game : MonoBehaviour {
 
 	void OnComboBarFill() {
 		if (statCombo == pointToCombo) {
+			if(useComboButton.image.raycastTarget == false)
+				yellowComboReady?.Invoke();
+
 			useComboButton.image.raycastTarget = useComboButton.interactable = true;
 
-			particlesWhenComboFull.Play();
+			LeanTweenEx.ChangeAlpha(auraYellow, 1.0f, 0.2f);
 		}
 	}
 
@@ -502,6 +537,40 @@ public class Game : MonoBehaviour {
 
 		popupUpgrade.selectedSector.StopSelectUpgrade();
 		AllowSpin();
+	}
+	#endregion
+
+	#region Audio callbacks
+	public Action onMouseOverGroup1;
+	public Action onMouseOverGroup2;
+	public Action onMouseOverGroupBoth;
+	public Action onMouseOverEye;
+
+	public Action onMouseExitEye;
+
+	public Action onMouseClickGroup1;
+	public Action onMouseClickGroup2;
+	public Action onMouseClickGroupBoth;
+	public Action onMouseClickEye;
+
+	public Action onSpinStart;
+	public Action onSpinEnd;
+
+	public Action upgradeSectorIn;
+	public Action upgradeSectorOut;
+
+	public Action blueBarRise;
+	public Action redBarRise;
+	public Action yellowBarRise;
+	public Action greenBarRise;
+
+	public Action yellowComboReady;
+
+	public Action winEvent;
+	public Action loseEvent;
+
+	public int GetRedFill() {
+		return statWin;
 	}
 	#endregion
 }

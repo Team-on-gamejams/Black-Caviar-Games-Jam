@@ -23,6 +23,7 @@
     "com.teamon.projectwindowdetails": "https://github.com/Team-on/ProjectWindowDetails.git#master",
     "com.teamon.rainbowfolders": "https://github.com/Team-on/unity3d-rainbow-folders.git#master",
     "com.teamon.screenshooter": "https://github.com/Team-on/UnityScreenShooter.git#main",
+    "com.unity.2d.animation": "5.0.4",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.build-report-inspector": "0.2.2-preview",

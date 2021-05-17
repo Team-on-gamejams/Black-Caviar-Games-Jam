@@ -24,6 +24,7 @@ public class CircleCatchUpgrade : MonoBehaviour {
 		}
 		else {
 			GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo = transform;
+			GameManager.Instance.game.upgradeSectorIn?.Invoke();
 		}
 	}
 
@@ -33,6 +34,7 @@ public class CircleCatchUpgrade : MonoBehaviour {
 
 		if(isCatchInput && GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo == transform) {
 			GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo = null;
+			GameManager.Instance.game.upgradeSectorOut?.Invoke();
 		}
 	}
 }

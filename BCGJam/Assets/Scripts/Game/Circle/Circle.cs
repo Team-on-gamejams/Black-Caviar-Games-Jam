@@ -120,7 +120,7 @@ public class Circle : MonoBehaviour {
 		Debug.Log($"Spin by {spinTimer}. Curr zero: {zeroPos}");
 
 		LeanTween.rotateAround(gameObject, Vector3.forward, degreesRotation, degreesRotation / spinPerSecond)
-			.setEase(LeanTweenType.easeOutQuint)
+			.setEase(LeanTweenType.easeOutSine)
 			.setOnComplete(onSpinEnd);
 
 		isFirstSpin = false;
