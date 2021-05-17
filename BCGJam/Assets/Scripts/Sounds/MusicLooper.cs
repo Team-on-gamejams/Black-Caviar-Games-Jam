@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 
 public class MusicLooper : MonoBehaviour {
 	[Header("Audio"), Space]
-	[SerializeField] float fadeTime = 3.0f;
 	[SerializeField] AudioData[] audioData;
 
 	[Header("Refs"), Space]
