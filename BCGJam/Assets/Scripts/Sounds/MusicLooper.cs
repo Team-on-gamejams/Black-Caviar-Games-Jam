@@ -32,6 +32,7 @@ public class MusicLooper : MonoBehaviour {
 	void StartPlay(AudioData data, float volume) {
 		LeanTween.cancel(gameObject);
 
+		data.source.Play();
 		data.source.volume = volume;
 
 		LeanTween.delayedCall(data.source.clip.length, () => {
