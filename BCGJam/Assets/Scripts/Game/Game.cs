@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
 	[SerializeField] int pointToWin = 8;
 	[SerializeField] int pointToLose = 8;
 	[SerializeField] int pointToCombo = 4;
+	[SerializeField] int pointToMaxUpgrade = 4;
 	[Space]
 	[SerializeField] int loseGrowPerTurn = 1;
 	[SerializeField] int turnsToIncreaseGrow = 5;
@@ -274,6 +275,10 @@ public class Game : MonoBehaviour {
 		}
 		if (statCombo < 0) {
 			statCombo = 0;
+		}
+
+		if(lastGreenMod > pointToMaxUpgrade) {
+			lastGreenMod = pointToMaxUpgrade;
 		}
 
 		//TODO: 
