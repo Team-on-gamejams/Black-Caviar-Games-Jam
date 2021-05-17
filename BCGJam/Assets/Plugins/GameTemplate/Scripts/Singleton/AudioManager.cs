@@ -91,34 +91,34 @@ public class AudioManager : Singleton<AudioManager> {
 	// General
 	/// <param name="volume">[0..1]</param>
 	public void SetVolume(AudioChannel channel, float volume) {
-		float adjustedVolume = GetAdjustedVolume(volume);
+		//float adjustedVolume = GetAdjustedVolume(volume);
 
-		switch (channel) {
-			case AudioChannel.Master:
-				if(isEnabled)
-					masterMixer.SetFloat("MasterVolume", adjustedVolume);
-				PlayerPrefs.SetFloat(SAVE_KEY_MASTER, volume);
-				break;
-			case AudioChannel.Music:
-				masterMixer.SetFloat("MusicVolume", adjustedVolume);
-				PlayerPrefs.SetFloat(SAVE_KEY_MUSIC, volume);
-				break;
-			case AudioChannel.Sound:
-				masterMixer.SetFloat("SoundsVolume", adjustedVolume);
-				PlayerPrefs.SetFloat(SAVE_KEY_SOUND, volume);
-				break;
-		}
+		//switch (channel) {
+		//	case AudioChannel.Master:
+		//		if(isEnabled)
+		//			masterMixer.SetFloat("MasterVolume", adjustedVolume);
+		//		PlayerPrefs.SetFloat(SAVE_KEY_MASTER, volume);
+		//		break;
+		//	case AudioChannel.Music:
+		//		masterMixer.SetFloat("MusicVolume", adjustedVolume);
+		//		PlayerPrefs.SetFloat(SAVE_KEY_MUSIC, volume);
+		//		break;
+		//	case AudioChannel.Sound:
+		//		masterMixer.SetFloat("SoundsVolume", adjustedVolume);
+		//		PlayerPrefs.SetFloat(SAVE_KEY_SOUND, volume);
+		//		break;
+		//}
 	}
 
 	public float GetVolume(AudioChannel channel) {
-		switch (channel) {
-			case AudioChannel.Master:
-				return PlayerPrefs.GetFloat(SAVE_KEY_MASTER, defaultMasterVolume);
-			case AudioChannel.Music:
-				return PlayerPrefs.GetFloat(SAVE_KEY_MUSIC, defaultMusicVolume);
-			case AudioChannel.Sound:
-				return PlayerPrefs.GetFloat(SAVE_KEY_SOUND, defaultSoundVolume);
-		}
+		//switch (channel) {
+		//	case AudioChannel.Master:
+		//		return PlayerPrefs.GetFloat(SAVE_KEY_MASTER, defaultMasterVolume);
+		//	case AudioChannel.Music:
+		//		return PlayerPrefs.GetFloat(SAVE_KEY_MUSIC, defaultMusicVolume);
+		//	case AudioChannel.Sound:
+		//		return PlayerPrefs.GetFloat(SAVE_KEY_SOUND, defaultSoundVolume);
+		//}
 
 		return 0.0f;
 	}

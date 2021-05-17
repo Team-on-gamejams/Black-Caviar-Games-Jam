@@ -70,15 +70,15 @@ public class TemplateSettingsMenu : PopupMenuBase {
 
 	#region Audio Settings
 	public void OnMainVolumeSliderChange(float value) {
-		AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Master, value);
+		//AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Master, value);
 	}
 
 	public void OnMusicVolumeSliderChange(float value) {
-		AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Music, value);
+		//AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Music, value);
 	}
 
 	public void OnSoundVolumeSliderChange(float value) {
-		AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Sound, value);
+		//AudioManager.Instance.SetVolume(AudioManager.AudioChannel.Sound, value);
 	}
 
 	public void OnToggleOnAudio(bool value) {
