@@ -67,7 +67,7 @@ public class SoundsController : MonoBehaviour {
 		game.blueBarRise += ()=> EventBlueBarRise.Random().Play();
 		game.redBarRise += ()=> EventRedBarRise.Random().Play();
 		game.yellowBarRise += EventYellowRise.Play;
-		game.greenBarRise += EventGreenRise.Play;
+		//game.greenBarRise += EventGreenRise.Play;
 
 		game.yellowComboReady += EventYellowComboReady.Play;
 

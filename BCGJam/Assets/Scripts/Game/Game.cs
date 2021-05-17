@@ -126,14 +126,15 @@ public class Game : MonoBehaviour {
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
 
-		if(blueMod + statLoseGrowPerTurn >= 1)
-			blueBarRise?.Invoke();
 		if (redMod >= 1)
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
 		if (greenMod >= 1)
 			greenBarRise?.Invoke();
+
+		if (greenMod >= 2)
+			GameManager.Instance.game.upgradeSectorIn?.Invoke();
 	}
 
 	void UseGroup2() {
@@ -149,14 +150,15 @@ public class Game : MonoBehaviour {
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
 
-		if (blueMod + statLoseGrowPerTurn >= 1)
-			blueBarRise?.Invoke();
 		if (redMod >= 1)
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
 		if (greenMod >= 1)
 			greenBarRise?.Invoke();
+
+		if (greenMod >= 2)
+			GameManager.Instance.game.upgradeSectorIn?.Invoke();
 	}
 
 	void UseGroupBoth() {
@@ -175,14 +177,15 @@ public class Game : MonoBehaviour {
 		statCombo += yellowMod;
 		lastGreenMod = greenMod;
 
-		if (blueMod + statLoseGrowPerTurn >= 1)
-			blueBarRise?.Invoke();
 		if (redMod >= 1)
 			redBarRise?.Invoke();
 		if (yellowMod >= 1)
 			yellowBarRise?.Invoke();
 		if (greenMod >= 1)
 			greenBarRise?.Invoke();
+
+		if (greenMod >= 2)
+			GameManager.Instance.game.upgradeSectorIn?.Invoke();
 	}
 
 	#region Mouse over Callbacks
@@ -393,6 +396,7 @@ public class Game : MonoBehaviour {
 
 		++statTurnsToIncreaseGrow;
 		if(statTurnsToIncreaseGrow > turnsToIncreaseGrow) {
+			blueBarRise?.Invoke();
 			statTurnsToIncreaseGrow = 0;
 			++statLoseGrowPerTurn;
 			defeatBarTooltip.UpdateText(defeatBarTooltipText.Replace("{num}", statLoseGrowPerTurn.ToString()));

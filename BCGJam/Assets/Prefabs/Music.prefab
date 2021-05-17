@@ -823,12 +823,12 @@ MonoBehaviour:
     source: {fileID: 6112391287076121243}
   - minNeededLevel: 0
     source: {fileID: 6112391287669977365}
-  - minNeededLevel: 6
+  - minNeededLevel: 8
     source: {fileID: 6112391288072719863}
-  - minNeededLevel: 15
+  - minNeededLevel: 16
     source: {fileID: 6112391286516084943}
-  - minNeededLevel: 25
+  - minNeededLevel: 23
     source: {fileID: 6112391288239373202}
-  - minNeededLevel: 35
+  - minNeededLevel: 32
     source: {fileID: 6112391286551010953}
   game: {fileID: 0}
