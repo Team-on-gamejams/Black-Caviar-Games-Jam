@@ -12107,12 +12107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49b8326b5f75414599938896e29f8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &1241975066 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1241975066, guid: 274ce89bfe1df27438551027a1422415,
-    type: 3}
-  m_PrefabInstance: {fileID: 5420815651281390695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1256241003
 GameObject:
   m_ObjectHideFlags: 0
@@ -23581,11 +23575,6 @@ PrefabInstance:
       propertyPath: EventLose
       value: 
       objectReference: {fileID: 86271482}
-    - target: {fileID: 5420815650543901495, guid: 274ce89bfe1df27438551027a1422415,
-        type: 3}
-      propertyPath: EventGreenRise
-      value: 
-      objectReference: {fileID: 1241975066}
     - target: {fileID: 5420815650543901495, guid: 274ce89bfe1df27438551027a1422415,
         type: 3}
       propertyPath: EventYellowRise

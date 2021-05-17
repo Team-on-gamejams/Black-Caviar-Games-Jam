@@ -327,6 +327,7 @@ MonoBehaviour:
   EventSpinStop: {fileID: 5420815652095579498}
   EventUpgradeSectorIn: {fileID: 5420815650636131030}
   EventUpgradeSectorOut: {fileID: 5420815650912993649}
+  EventUpgradeMagnet: {fileID: 1241975066}
   EventBlueBarRise:
   - {fileID: 0}
   - {fileID: 0}
@@ -336,7 +337,6 @@ MonoBehaviour:
   - {fileID: 0}
   EventYellowRise: {fileID: 0}
   EventYellowComboReady: {fileID: 0}
-  EventGreenRise: {fileID: 0}
   EventWin: {fileID: 0}
   EventLose: {fileID: 0}
   game: {fileID: 0}
