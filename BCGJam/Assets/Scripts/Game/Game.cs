@@ -120,7 +120,7 @@ public class Game : MonoBehaviour {
 	void UseGroup1() {
 		circle.AnimateArrowsGroup1();
 
-		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		statLose -= blueMod;
 		statWin += redMod;
@@ -131,7 +131,7 @@ public class Game : MonoBehaviour {
 	void UseGroup2() {
 		circle.AnimateArrowsGroup2();
 
-		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		statLose -= blueMod;
 		statWin += redMod;
@@ -143,7 +143,7 @@ public class Game : MonoBehaviour {
 		circle.AnimateArrowsGroup1();
 		circle.AnimateArrowsGroup2();
 
-		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
 		statLose -= blueMod;
 		statWin += redMod;
@@ -153,30 +153,95 @@ public class Game : MonoBehaviour {
 
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
-		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		if(blueCount > 1) {
+			int bonusValue = Mathf.RoundToInt((blueCount - 1) * statMultiplierFor2Plus);
+			int origValue = blueMod - bonusValue;
+
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-origValue}{-bonusValue}");
+		}
+		else if (blueMod != 0) {
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-blueMod}");
+		}
+		else {
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}");
+		}
+
+		if (redCount > 1) {
+			int bonusValue = Mathf.RoundToInt((redCount - 1) * statMultiplierFor2Plus);
+			int origValue = redMod - bonusValue;
+
+			progressBarWin.UpdateHalfFillValue(statWin + redMod, $"+{origValue}+{bonusValue}");
+		}
+		else {
+			progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		}
+
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
 		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroup2() {
-		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		circle.GetGroup2Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		if (blueCount > 1) {
+			int bonusValue = Mathf.RoundToInt((blueCount - 1) * statMultiplierFor2Plus);
+			int origValue = blueMod - bonusValue;
+
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-origValue}{-bonusValue}");
+		}
+		else if (blueMod != 0) {
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-blueMod}");
+		}
+		else {
+			progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}");
+		}
+
+		if (redCount > 1) {
+			int bonusValue = Mathf.RoundToInt((redCount - 1) * statMultiplierFor2Plus);
+			int origValue = redMod - bonusValue;
+
+			progressBarWin.UpdateHalfFillValue(statWin + redMod, $"+{origValue}+{bonusValue}");
+		}
+		else {
+			progressBarWin.UpdateHalfFillValue(statWin + redMod);
+		}
+
 		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
 		progressBarUpgrade.UpdateHalfFillValue(greenMod);
 	}
 
 	public void OnMouseOverGroupBoth() {
-		circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, statMultiplierFor2Plus);
+		if (isGroupSelectionShowed) {
+			circle.GetGroupBothModifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
-		progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn);
-		progressBarWin.UpdateHalfFillValue(statWin + redMod);
-		progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
-		progressBarUpgrade.UpdateHalfFillValue(greenMod);
+			if (blueCount > 1) {
+				int bonusValue = Mathf.RoundToInt((blueCount - 1) * statMultiplierFor2Plus);
+				int origValue = blueMod - bonusValue;
+
+				progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-origValue}{-bonusValue}");
+			}
+			else if (blueMod != 0) {
+				progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}{-blueMod}");
+			}
+			else {
+				progressBarLose.UpdateHalfFillValue(statLose - blueMod + statLoseGrowPerTurn, $"+{statLoseGrowPerTurn}");
+			}
+
+			if (redCount > 1) {
+				int bonusValue = Mathf.RoundToInt((redCount - 1) * statMultiplierFor2Plus);
+				int origValue = redMod - bonusValue;
+
+				progressBarWin.UpdateHalfFillValue(statWin + redMod, $"+{origValue}+{bonusValue}");
+			}
+			else {
+				progressBarWin.UpdateHalfFillValue(statWin + redMod);
+			}
+
+			progressBarCombo.UpdateHalfFillValue(statCombo + yellowMod);
+			progressBarUpgrade.UpdateHalfFillValue(greenMod);
+		}
 	}
 
 	public void OnMouseExitGroup1() {
@@ -194,10 +259,12 @@ public class Game : MonoBehaviour {
 	}
 
 	public void OnMouseExitGroupBoth() {
-		progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
-		progressBarWin.ClearHalfFillValue();
-		progressBarCombo.ClearHalfFillValue();
-		progressBarUpgrade.ClearHalfFillValue();
+		if (isGroupSelectionShowed) {
+			progressBarLose.UpdateHalfFillValue(statLose + statLoseGrowPerTurn);
+			progressBarWin.ClearHalfFillValue();
+			progressBarCombo.ClearHalfFillValue();
+			progressBarUpgrade.ClearHalfFillValue();
+		}
 	}
 	#endregion
 

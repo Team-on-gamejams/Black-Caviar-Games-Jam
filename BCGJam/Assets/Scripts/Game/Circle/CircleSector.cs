@@ -32,7 +32,7 @@ public class CircleSector : MonoBehaviour {
 		RecalcVisuals();
 	}
 
-	public void AddModifiers(ref int redMod, ref int yellowMod, ref int blueMod, ref int greenMod) {
+	public void AddModifiers(ref int redMod, ref int yellowMod, ref int blueMod, ref int greenMod, ref int redCount, ref int blueCount) {
 		int mod;
 		switch (currLevel) {
 			case 0:
@@ -52,9 +52,11 @@ public class CircleSector : MonoBehaviour {
 		switch (currType) {
 			case SectorType.Red:
 				redMod += mod;
+				++redCount;
 				break;
 			case SectorType.Blue:
 				blueMod += mod;
+				++blueCount;
 				break;
 			case SectorType.Yellow:
 				yellowMod += mod;

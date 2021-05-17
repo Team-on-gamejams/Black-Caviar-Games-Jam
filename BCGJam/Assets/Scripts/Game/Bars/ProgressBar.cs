@@ -34,7 +34,7 @@ public class ProgressBar : MonoBehaviour {
 			halfFillTextField.text = "";
 	}
 
-	public void UpdateHalfFillValue(int newValue) {
+	public void UpdateHalfFillValue(int newValue, string textOverride = null) {
 		if (newValue > sectors.Length)
 			newValue = sectors.Length;
 		if (newValue < 0)
@@ -42,10 +42,16 @@ public class ProgressBar : MonoBehaviour {
 
 		float delta = newValue - currValue;
 
+		if (halfFillTextField)
+			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
 
 		if (delta == 0) {
-			if(halfFillTextField)
-				halfFillTextField.text = "";
+			if (halfFillTextField) {
+				if (textOverride != null)
+					halfFillTextField.text = textOverride;
+				else
+					halfFillTextField.text = "";
+			}
 
 			for (int i = 0; i < sectors.Length; ++i) {
 				sectors[i].UnFillHalf(fillTime);
@@ -53,8 +59,10 @@ public class ProgressBar : MonoBehaviour {
 		}
 		else if (delta > 0) {
 			if (halfFillTextField) {
-				halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
-				halfFillTextField.text = $"+{delta}";
+				if(textOverride != null)
+					halfFillTextField.text = textOverride;
+				else
+					halfFillTextField.text = $"+{delta}";
 			}
 
 			for (int i = 0; i < sectors.Length; ++i) {
@@ -66,8 +74,10 @@ public class ProgressBar : MonoBehaviour {
 		}
 		else if (delta < 0) {
 			if (halfFillTextField) {
-				halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
-				halfFillTextField.text = $"{delta}";
+				if (textOverride != null)
+					halfFillTextField.text = textOverride;
+				else
+					halfFillTextField.text = $"{delta}";
 			}
 
 			for (int i = 0; i < sectors.Length; ++i) {
