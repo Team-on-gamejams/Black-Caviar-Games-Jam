@@ -17,7 +17,7 @@ public class CircleSector : MonoBehaviour {
 
 
 	[Header("Refs"), Space]
-	[SerializeField] Image sectorContentImage; 
+	[SerializeField] Image sectorContentImage;
 	[SerializeField] LevelData[] levels;
 	[SerializeField] TypeData[] types;
 	[SerializeField] AuraData[] auras;
@@ -82,7 +82,7 @@ public class CircleSector : MonoBehaviour {
 
 	public void ShowAura() {
 		foreach (var aura in auras) {
-			if(aura.level == currLevel && aura.type == currType)
+			if (aura.level == currLevel && aura.type == currType)
 				aura.Activate();
 			else
 				aura.Deactivate();
@@ -99,6 +99,20 @@ public class CircleSector : MonoBehaviour {
 	public void HideAura() {
 		foreach (var aura in auras) {
 			aura.Deactivate();
+		}
+	}
+
+	public void ShowTooltip() {
+		foreach (var type in types) {
+			if (type.type == currType) {
+				type.popupOnMouseOver.Show();
+			}
+		}
+	}
+
+	public void HideTooltip() {
+		foreach (var type in types) {
+			type.popupOnMouseOver.Hide();
 		}
 	}
 
@@ -124,9 +138,10 @@ public class CircleSector : MonoBehaviour {
 		public SectorType type;
 		public Image[] eyeBorder;
 		public Image[] eye;
+		public MouseTooltipEyes popupOnMouseOver;
 
 		public void Activate() {
-			foreach (var i in eyeBorder) 
+			foreach (var i in eyeBorder)
 				i.gameObject.SetActive(true);
 			foreach (var i in eye)
 				i.gameObject.SetActive(true);

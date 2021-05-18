@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class CircleCatchUpgrade : MonoBehaviour {
 	[NonSerialized] public bool isCatchInput;
+	public CircleSector sector;
 
 	public void OnClick() {
 		if (isCatchInput) {
