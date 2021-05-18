@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ComboReadyParticle
+  m_Name: ForegroundParticles4
   m_Shader: {fileID: 4800000, guid: ecfa8f5732b504ef98fba10aa18d0326, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e5e8f4d09c42e1346abbee9d7144f367, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62f954946ffe3cf409dc7d232f4ea1f5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 11518710
+    totalSpriteSurfaceArea: 11502326
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -91,11 +91,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d30dbb893076016499fc1b22f571e9b2, type: 3}
   - {fileID: 21300000, guid: a498eb89ad57ebe4c99ac43f76ff0b79, type: 3}
   - {fileID: 21300000, guid: 0298bce988ddad24d91f89c204466339, type: 3}
-  - {fileID: 21300000, guid: e7d8ece95c37c7c4a8816faf3e0dea1c, type: 3}
   - {fileID: 21300000, guid: e167342a069fd71479802b21b24aa265, type: 3}
   - {fileID: 21300000, guid: 6b60ed4a5db393f429027bbd7e6542d0, type: 3}
   - {fileID: 21300000, guid: 2076a5aaf644ba64aa9444637b5987d5, type: 3}
-  - {fileID: 21300000, guid: d24a7aba2c6fb8b45a1ca10aa11ec954, type: 3}
   - {fileID: 21300000, guid: b51a8dda66e824b4ebf0b81a6d61a627, type: 3}
   - {fileID: 21300000, guid: e3a98bea64e99a54b873002729b16992, type: 3}
   - {fileID: 21300000, guid: 2b3fcfeaf8686864b9637d57bccdf845, type: 3}
@@ -164,11 +162,9 @@ SpriteAtlas:
   - Tentacle
   - bronzebig2
   - anim107
-  - ProgressBarPartBlueFill
   - yellow_r
   - 7
   - redbronzebig3
-  - ProgressBarPartBlueBorder
   - a_red
   - bronzemultibig2
   - CircleSector30Lvl1
