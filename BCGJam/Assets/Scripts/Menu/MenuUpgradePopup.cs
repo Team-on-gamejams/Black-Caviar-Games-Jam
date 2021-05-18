@@ -53,6 +53,20 @@ public class MenuUpgradePopup : PopupMenuBase {
 		onSkipUpgradeEvent?.Invoke();
 	}
 
+	public void ToggleShow() {
+		if (isShowed) {
+			isShowed = false;
+			LeanTween.move(popupTransform.gameObject, closePos.position, animTime)
+				.setEase(easeOut);
+		}
+		else {
+			isShowed = true;
+			LeanTween.move(popupTransform.gameObject, openPos.position, animTime)
+				.setEase(easeIn)
+				.setDelay(Time.deltaTime);
+		}
+	}
+
 	CircleSector.SectorType[] FillTypes() {
 		if(allTypes == null || allTypes.Length == 0) {
 			allTypes = new CircleSector.SectorType[4];
