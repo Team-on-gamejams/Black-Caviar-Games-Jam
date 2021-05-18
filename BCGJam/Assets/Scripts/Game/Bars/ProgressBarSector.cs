@@ -20,7 +20,10 @@ public class ProgressBarSector : MonoBehaviour {
 	bool isFilledHalf;
 
 	private void Update() {
-		fillHalfImage.color = fillHalfImage.color.SetA(Mathf.PingPong(Time.time, 0.5f));
+		if(fillHalfImage)
+			fillHalfImage.color = fillHalfImage.color.SetA(Mathf.PingPong(Time.time / 4, 0.1f) + 0.4f);
+		if (eyeCg)
+			eyeCg.alpha = Mathf.PingPong(Time.time / 4, 0.1f) + 0.4f;
 	}
 
 	public void Init(int id) {
