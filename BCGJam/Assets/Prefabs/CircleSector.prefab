@@ -642,6 +642,7 @@ MonoBehaviour:
   cg: {fileID: 6603916714195945395}
   textField: {fileID: 4719008073616206476}
   childLayoutElement: {fileID: 7622395158537323159}
+  parent: {fileID: 0}
 --- !u!1 &490403479029185636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,8 +1778,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041F\u0443\u0441\u0442\u043E\u0439 \u0441\u0435\u043A\u0442\u043E\u0440\n\n\u041C\u043E\u0436\u0435\u0442
     \u0431\u044B\u0442\u044C \u0437\u0430\u043C\u0435\u043D\u0435\u043D \u043F\u0440\u0438
-    \u043F\u043E\u043C\u043E\u0449\u0438 \u0437\u0435\u043B\u0435\u043D\u043E\u0433\u043E
-    \u0433\u043B\u0430\u0437\u0430"
+    \u043F\u043E\u043C\u043E\u0449\u0438 \u0437\u0435\u043B\u0435\u043D\u044B\u0445
+    \u0433\u043B\u0430\u0437"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
@@ -4914,6 +4915,7 @@ MonoBehaviour:
   cg: {fileID: 5874606843229479915}
   textField: {fileID: 1448079374199012831}
   childLayoutElement: {fileID: 7352543646388849294}
+  parent: {fileID: 0}
 --- !u!1 &4780982661659025693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6446,6 +6448,7 @@ MonoBehaviour:
   cg: {fileID: 5411724036618221969}
   textField: {fileID: 8707208055264860940}
   childLayoutElement: {fileID: 4896412092679286987}
+  parent: {fileID: 0}
 --- !u!1 &6107375606648426697
 GameObject:
   m_ObjectHideFlags: 0
@@ -7183,6 +7186,7 @@ MonoBehaviour:
   cg: {fileID: 4103646048616123590}
   textField: {fileID: 9144859302594671434}
   childLayoutElement: {fileID: 7365251565635033488}
+  parent: {fileID: 0}
 --- !u!1 &6781904221457464512
 GameObject:
   m_ObjectHideFlags: 0
@@ -8600,6 +8604,7 @@ MonoBehaviour:
   cg: {fileID: 4928796743849712944}
   textField: {fileID: 3510202215450094211}
   childLayoutElement: {fileID: 5317829159188621410}
+  parent: {fileID: 0}
 --- !u!1 &8233585470995171791
 GameObject:
   m_ObjectHideFlags: 0
@@ -9713,7 +9718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a233af9258fd1a247957f182ba7b2683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sector: {fileID: 0}
+  sector: {fileID: 8739030487128094181}
 --- !u!114 &6671223447020612165
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class MouseTooltipEyes : MonoBehaviour {
 	[SerializeField] CanvasGroup cg;
 	[SerializeField] TextMeshProUGUI textField;
 	[SerializeField] LayoutElement childLayoutElement;
+	[SerializeField] Transform parent;
 
 	bool isShowed;
 
@@ -33,6 +34,10 @@ public class MouseTooltipEyes : MonoBehaviour {
 
 	private void Awake() {
 		cg.alpha = 0.0f;
+		transform.SetParent(parent.transform);
+		transform.localScale = Vector3.one;
+		transform.localEulerAngles = Vector3.zero;
+		transform.localPosition = Vector3.zero;
 	}
 
 	private void Start() {

@@ -2,3 +2,4 @@ abcdefghijklmnopqrstuvwxyz
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 абвгдеёжзийклмнопрстуфхцчшщъыьэюя
 АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ
+1234567890+-

@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2a2d9684186043c4fbc9cc250d3a94a2, type: 3}
-    totalSpriteSurfaceArea: 11502326
+    totalSpriteSurfaceArea: 11584694
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -58,6 +58,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2c6216b39b322ec47bb3a2770389a737, type: 3}
   - {fileID: 21300000, guid: 1e14d124fc5b4224b8a30a65b66ef055, type: 3}
   - {fileID: 21300000, guid: 30706034bb3d314448ad9f14f9b9cc78, type: 3}
+  - {fileID: 21300000, guid: 62690c34500f5794e8f0cf6fea4aaa0c, type: 3}
   - {fileID: 21300000, guid: 5be916647778ee54c99bcea94334e187, type: 3}
   - {fileID: 21300000, guid: 32706884932a01a449f979ba5dc9415a, type: 3}
   - {fileID: 21300000, guid: 62f954946ffe3cf409dc7d232f4ea1f5, type: 3}
@@ -129,6 +130,7 @@ SpriteAtlas:
   - button2
   - a_green
   - anim100
+  - big_eye_hover
   - bronze2
   - 1234
   - 4

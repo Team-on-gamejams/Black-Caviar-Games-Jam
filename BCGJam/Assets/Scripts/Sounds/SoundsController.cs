@@ -46,12 +46,19 @@ public class SoundsController : MonoBehaviour {
 		game.onMouseOverGroup1 += MouseOverBronze.Play;
 		game.onMouseOverGroup2 += MouseOverRedBronze.Play;
 		game.onMouseOverGroupBoth += MouseOverMulti.Play;
-		game.onMouseOverEye += MouseOverEye.Play;
+		game.onMouseOverEye += () => {
+			MouseOverEye.volume = 1.0f;
+			MouseOverEye.Play();
+			AudioManager.Instance.ChangeASVolume(MouseOverEye, 0.0f, 0.5f);
+		}; 
 
 		game.onMouseClickGroup1 += MouseClickBronze.Play;
 		game.onMouseClickGroup2 += MouseClickRedBronze.Play;
 		game.onMouseClickGroupBoth += MouseClickMulti.Play;
-		game.onMouseClickEye += MouseClickEye.Play;
+
+		game.onMouseClickEye += () => {
+			MouseClickEye.Play();
+		};
 
 		game.onSpinStart += ()=> {
 			EventSpinInProcess.Play();

@@ -21,8 +21,7 @@ public class CircleCatchUpgrade : MonoBehaviour {
 
 	public void OnEnter() {
 		if (!isCatchInput) {
-			//TODO:
-			Debug.Log("Show popup");
+			sector.ShowTooltip();
 		}
 		else {
 			GameManager.Instance.game.upgradeMagnet?.Invoke();
@@ -31,10 +30,9 @@ public class CircleCatchUpgrade : MonoBehaviour {
 	}
 
 	public void OnExit() {
-		//TODO:
-		Debug.Log("Hide popup");
+		sector.HideTooltip();
 
-		if(isCatchInput && GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo == transform) {
+		if (isCatchInput && GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo == transform) {
 			GameManager.Instance.game.popupUpgrade.selectedSector.anchorTo = null;
 		}
 	}

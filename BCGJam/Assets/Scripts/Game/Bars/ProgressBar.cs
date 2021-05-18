@@ -13,9 +13,6 @@ public class ProgressBar : MonoBehaviour {
 
 	[Header("Visual"), Space]
 	[SerializeField] float fillTime = 0.1f;
-	[SerializeField] Vector2 changeTextOffset;
-	[SerializeField] Vector2 changeTextOffsetAfterSomeValue;
-	[SerializeField] int someValue = 8;
 
 	[Header("Refs"), Space]
 	[SerializeField] ProgressBarSector[] sectors;
@@ -41,9 +38,6 @@ public class ProgressBar : MonoBehaviour {
 			newValue = 0;
 
 		float delta = newValue - currValue;
-
-		if (halfFillTextField)
-			halfFillTextField.rectTransform.position = sectors[newValue == 0 ? newValue : newValue - 1].transform.position + (Vector3)(newValue >= someValue ? changeTextOffsetAfterSomeValue : changeTextOffset);
 
 		if (delta == 0) {
 			if (halfFillTextField) {
