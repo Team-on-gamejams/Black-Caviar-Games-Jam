@@ -17,10 +17,10 @@ public class MusicLooper : MonoBehaviour {
 
 	float[] volumes;
 
-	private void Awake() {
+	public void Init() {
 		volumes = new float[audioData.Length];
 		for(int i = 0; i < volumes.Length; ++i) {
-			volumes[i] = audioData[i].source.volume;
+			volumes[i] = 1.0f;
 			audioData[i].source.volume = 0.0f;
 			audioData[i].source.loop = true;
 			audioData[i].source.Play();

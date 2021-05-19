@@ -13374,14 +13374,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351456354}
-  m_LocalRotation: {x: 0, y: 0, z: 0.97147655, w: 0.23713563}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9792879, w: -0.2024725}
   m_LocalPosition: {x: 0.61794925, y: 1.3723072, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1366225175}
   m_Father: {fileID: 1443701173}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 203.363}
 --- !u!1 &351716479
 GameObject:
   m_ObjectHideFlags: 0
@@ -13472,6 +13472,7 @@ MonoBehaviour:
     \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0432 \u0438\u0433\u0440\u0435."
   tentacle1: {fileID: 2142430428}
   tentacle2: {fileID: 1443701170}
+  musicLooper: {fileID: 602962092}
   menuManager: {fileID: 351716482}
   popupWin: {fileID: 1190124591}
   popupLose: {fileID: 655512245}
@@ -25748,7 +25749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.7, y: 0}
+  m_AnchoredPosition: {x: 6.699997, y: 0}
   m_SizeDelta: {x: 208.00189, y: 239.5665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894400437
@@ -43720,6 +43721,31 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 351716481}
+    - target: {fileID: 6112391288528965001, guid: 2fc459a2ce790bf4db2f0199c532f243,
+        type: 3}
+      propertyPath: audioData.Array.data[1].minNeededLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112391288528965001, guid: 2fc459a2ce790bf4db2f0199c532f243,
+        type: 3}
+      propertyPath: audioData.Array.data[2].minNeededLevel
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112391288528965001, guid: 2fc459a2ce790bf4db2f0199c532f243,
+        type: 3}
+      propertyPath: audioData.Array.data[3].minNeededLevel
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112391288528965001, guid: 2fc459a2ce790bf4db2f0199c532f243,
+        type: 3}
+      propertyPath: audioData.Array.data[4].minNeededLevel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112391288528965001, guid: 2fc459a2ce790bf4db2f0199c532f243,
+        type: 3}
+      propertyPath: audioData.Array.data[5].minNeededLevel
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6112391288528965007, guid: 2fc459a2ce790bf4db2f0199c532f243,
         type: 3}
       propertyPath: m_Name
@@ -45492,7 +45518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -63.1, y: 67}
+  m_AnchoredPosition: {x: -63.09961, y: 67}
   m_SizeDelta: {x: 114, y: 101}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1184174475
@@ -53319,8 +53345,8 @@ MonoBehaviour:
   - {fileID: 157691158}
   - {fileID: 2116822394}
   m_Bounds:
-    m_Center: {x: -0.43857002, y: 0.7313049, z: 0}
-    m_Extent: {x: 2.9777102, y: 2.3063054, z: 0}
+    m_Center: {x: 0.7542217, y: -0.3862183, z: 0}
+    m_Extent: {x: 3.0227327, y: 2.2967186, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &1443701172
@@ -69840,7 +69866,6 @@ GameObject:
   - component: {fileID: 1872952621}
   - component: {fileID: 1872952624}
   - component: {fileID: 1872952623}
-  - component: {fileID: 1872952622}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -69867,22 +69892,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -537}
   m_SizeDelta: {x: -612.9822, y: 114.5126}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1872952622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872952620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1872952623}
-  maintainTextAlignment: 1
-  key: GAME_STATUS_YOU_WIN
-  afterKeyValue: 
 --- !u!114 &1872952623
 MonoBehaviour:
   m_ObjectHideFlags: 0

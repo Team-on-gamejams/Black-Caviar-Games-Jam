@@ -55,6 +55,8 @@ public class Game : MonoBehaviour {
 	[Space]
 	[SerializeField] Animator tentacle1;
 	[SerializeField] Animator tentacle2;
+	[Space]
+	[SerializeField] MusicLooper musicLooper;
 
 	[Header("Refs - menu"), Space]
 	[SerializeField] MenuManager menuManager;
@@ -91,6 +93,8 @@ public class Game : MonoBehaviour {
 		progressBarCombo.Init();
 		progressBarLoseGrow.Init();
 		progressBarUpgrade.Init();
+
+		musicLooper.Init();
 
 		buttonSpin.interactable = true;
 
