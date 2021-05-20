@@ -372,29 +372,20 @@ public class Game : MonoBehaviour {
 
 		filledBars = 0;
 
-		LeanTween.delayedCall(gameObject, 0.02f, () => {
-			if (tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) {
+		LeanTween.delayedCall(gameObject, Time.smoothDeltaTime, () => {
+			LeanTween.delayedCall(
+				gameObject,
+				(tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f ? 0 : tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime * 0.5f) + 0.1f, 
+				() => {
 				tentacle1.SetTrigger("IsSpin");
 				tentacle2.SetTrigger("IsSpin");
 				tentacle1.SetBool("IsGrab", false);
 				tentacle2.SetBool("IsGrab", false);
 
-				LeanTween.delayedCall(gameObject, 0.02f, () => {
+				LeanTween.delayedCall(gameObject, Time.smoothDeltaTime, () => {
 					circle.Spin();
 				});
-			}
-			else {
-				LeanTween.delayedCall(gameObject, 0.5f, () => {
-					tentacle1.SetTrigger("IsSpin");
-					tentacle2.SetTrigger("IsSpin");
-					tentacle1.SetBool("IsGrab", false);
-					tentacle2.SetBool("IsGrab", false);
-
-					LeanTween.delayedCall(gameObject, 0.02f, () => {
-						circle.Spin();
-					});
-				});
-			}
+			});
 		});
 	}
 
