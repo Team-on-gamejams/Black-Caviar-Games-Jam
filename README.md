@@ -2,7 +2,7 @@
 Made in 72 hours for [Black Caviar Games game jam](https://bcgjam.com/)  
 Theme: Secret society  
 
-![Cover](Screenshots/ItchioPage/CoverImage.png) 
+![Cover](Screenshots/ItchioPage/CoverImage.gif) 
 
 The player must have time to summon one of the ancient gods before his cult is arrested by the police. To do this, you need to turn the Wheel of Chaos, choose one of the patterns to control the passage of time. 
 
