@@ -1,5 +1,5 @@
-Game page - https://teamon.itch.io/gametemplate
-Source code - https://github.com/Team-on/UnityGameTemplate
+Game page - https://teamon.itch.io/wheel-of-chaos
+Source code - https://github.com/savik-games/Black-Caviar-Games-Jam
 
 
 Available in Windows, OSX, Linux, Android and Web 
@@ -14,4 +14,4 @@ Make sure to set the x86_64 as executable before running.
 
 
 Used assets:
-https://github.com/Team-on/UnityGameTemplate/wiki/Used-assets
+https://github.com/savik-games/Black-Caviar-Games-Jam#used-assets
