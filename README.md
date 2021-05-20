@@ -1,4 +1,4 @@
-# [GAME_NAME](https://teamon.itch.io/wheel-of-chaos)
+# [Wheel of Chaos](https://teamon.itch.io/wheel-of-chaos)
 Made in 72 hours for [Black Caviar Games game jam](https://bcgjam.com/)  
 Theme: Secret society  
 
