@@ -1,60 +1,32 @@
-# [GAME_NAME](GAME_LINK)
-Made in X hours for [JAM_NAME](JAM_LINK)  
-Theme: THEME  
-
-Short desc(player should get game genre and USP)
+# [GAME_NAME](https://teamon.itch.io/wheel-of-chaos)
+Made in 72 hours for [Black Caviar Games game jam](https://bcgjam.com/)  
+Theme: Secret society  
 
 ![Cover](Screenshots/ItchioPage/CoverImage.png) 
 
-A bit longer desc. 
-(e.g. Dyson Sphere Program is a sci-fi simulation game with space, adventure, exploration and factory automation elements where you can build your own galactic industrial empire from scratch)
+The player must have time to summon one of the ancient gods before his cult is arrested by the police. To do this, you need to turn the Wheel of Chaos, choose one of the patterns to control the passage of time. 
 
-
-# Plot: 
- A quick summary of the story
- (E.g. In the distant future, the power of science and technology has ushered a new age to the human race. Space and time have become irrelevant thanks to virtual reality. A new kind of supercomputer has been developed – a machine whose superior artificial intelligence and computing capability will push humanity even further. There is only one problem: there isn’t enough energy in the whole planet to feed this machine.)
-
-
-# Key features
- * A list of features if your project is a tool or a game
+You can focus on upgrading the wheel by adding new sectors, collecting bonuses for combos, or on confusing the tracks to hide from justice for longer-it's up to you.
 
 
 # Controls and supported input devices
- * Devices
- * You can play with keyboard or any gamepad
- * Controls
- * WASD - move
- * Mouse - aim
+ * You can play with mouse on touches
 
-
-# How to play
- * Do this to win
- * Do that to lose
  
- 
-# Tips
- * Tips
- 
- 
-# What is TriJam?
-TriJam is a jam where your goal is to try and make something playable (and fun) in only 3 hours! How is that even possible, you ask? Well, just look at the history of previous TriJams and we're sure you'll be convinced that it is not only possible, but very manageable!  
-Video about TriJam from Rocknight Studios: https://www.youtube.com/watch?v=6PysBXflWdg&ab_channel=RocknightStudios
-
-
-# Diversifiers
- * Share the source code of your project
+# What is Black Caviar Games game jam?
+Well, it's a game jam organized by Black Caviar Games
 
 
 # Credits
  * [Team-on](https://github.com/Team-on) - programmer
- * [Who](LINK) - role
+ * [downscarf](https://www.instagram.com/downscarf/) - Art, Game-Design
+ * [Snow Crab](https://soundcloud.com/snow_crab) - Music
 
 
 # Used tools
  * Unity 2020.2.0f1
  * Visual Studio 2019
  * Adobe Photoshop 2020
- * sfxr
 
 
 # Used assets
@@ -64,7 +36,7 @@ Video about TriJam from Rocknight Studios: https://www.youtube.com/watch?v=6PysB
  
  
 # Downloads and Links
-Available in [Windows, OSX, Linux, Android and Web](GAME_LINK).  
+Available in [Windows, OSX, Linux, Android and Web](https://teamon.itch.io/wheel-of-chaos).  
 Consider downloading a game instead of playing the web version for better performance and stability.  
 If you encounter any problem, please leave a issue!  
 
