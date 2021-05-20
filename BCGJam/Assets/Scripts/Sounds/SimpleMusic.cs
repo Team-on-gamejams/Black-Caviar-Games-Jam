@@ -17,10 +17,6 @@ public class SimpleMusic : MonoBehaviour {
 
 
 	private void Awake() {
-		splash.onShow += StartPlay;
-	}
-
-	public void StartPlay() {
 		loopMusic.loop = true;
 		loopMusic.Play();
 	}

@@ -1719,6 +1719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166960894600083676}
+  - component: {fileID: 5668318789639504048}
   - component: {fileID: 6532427054872249000}
   - component: {fileID: 3510202215450094211}
   - component: {fileID: 5317829159188621410}
@@ -1748,6 +1749,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5668318789639504048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641214239583128277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 3510202215450094211}
+  maintainTextAlignment: 1
+  key: Tooltip_sector_empty
+  afterKeyValue: 
 --- !u!222 &6532427054872249000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1776,10 +1793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0443\u0441\u0442\u043E\u0439 \u0441\u0435\u043A\u0442\u043E\u0440\n\n\u041C\u043E\u0436\u0435\u0442
-    \u0431\u044B\u0442\u044C \u0437\u0430\u043C\u0435\u043D\u0435\u043D \u043F\u0440\u0438
-    \u043F\u043E\u043C\u043E\u0449\u0438 \u0437\u0435\u043B\u0435\u043D\u044B\u0445
-    \u0433\u043B\u0430\u0437"
+  m_text: Empty sector  Can be replaced when green eyes bar grows
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
@@ -2746,6 +2760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048521814922556144}
+  - component: {fileID: 1455495363414134546}
   - component: {fileID: 5428002505227972359}
   - component: {fileID: 9144859302594671434}
   - component: {fileID: 7365251565635033488}
@@ -2775,6 +2790,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1455495363414134546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2403775562233652581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 9144859302594671434}
+  maintainTextAlignment: 1
+  key: Tooltip_sector_yellow
+  afterKeyValue: 
 --- !u!222 &5428002505227972359
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2803,14 +2834,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u0436\u0435\u043B\u0442\u044B\u0445
-    \u0433\u043B\u0430\u0437 \u043C\u043E\u0436\u043D\u043E \u0441\u043E\u0431\u0440\u0430\u0442\u044C
-    \u043A\u043E\u043C\u0431\u043E. \u0423 \u0432\u0430\u0441 \u043F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F
-    \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C
-    \u0432\u0441\u0435 6 \u0441\u0435\u043A\u0442\u043E\u0440\u043E\u0432 \u0437\u0430
-    \u0440\u0430\u0437\n\n\u0417\u0430\u043F\u043E\u043B\u043D\u044F\u044E\u0442
-    \u0436\u0435\u043B\u0442\u0443\u044E \u0448\u043A\u0430\u043B\u0443 \u0441\u043F\u0440\u0430\u0432\u0430.
-    \n"
+  m_text: You can make a combo with the help of yellow eyes. Gives an opportunity
+    to activate all 6 sectors at a time  Fill in the yellow scale on the right.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
@@ -6030,6 +6055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3421034107942219274}
+  - component: {fileID: 5305815355379293561}
   - component: {fileID: 8621531911049136726}
   - component: {fileID: 4719008073616206476}
   - component: {fileID: 7622395158537323159}
@@ -6059,6 +6085,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5305815355379293561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5881383394026999055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 4719008073616206476}
+  maintainTextAlignment: 1
+  key: Tooltip_sector_green
+  afterKeyValue: 
 --- !u!222 &8621531911049136726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6087,15 +6129,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u0437\u0435\u043B\u0435\u043D\u044B\u0445
-    \u0433\u043B\u0430\u0437 \u043C\u043E\u0436\u043D\u043E \u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C
-    \u043A\u043E\u043B\u0435\u0441\u043E \u0425\u0430\u043E\u0441\u0430. \n\n\u0417\u0430
-    2 \u0433\u043B\u0430\u0437\u0430 - \u043E\u0434\u043D\u043E\u0433\u043B\u0430\u0437\u044B\u0439
-    \u0441\u0435\u043A\u0442\u043E\u0440\n\u0417\u0430 3 \u0433\u043B\u0430\u0437\u0430
-    - \u0434\u0432\u0443\u0445\u0433\u043B\u0430\u0437\u044B\u0439 \u0441\u0435\u043A\u0442\u043E\u0440\n\u0417\u0430
-    4 \u0433\u043B\u0430\u0437\u0430 - \u0442\u0440\u0435\u0445\u0433\u043B\u0430\u0437\u044B\u0439
-    \u0441\u0435\u043A\u0442\u043E\u0440\n\n\u0417\u0430\u043F\u043E\u043B\u043D\u044F\u044E\u0442
-    \u0437\u0435\u043B\u0435\u043D\u0443\u044E \u0448\u043A\u0430\u043B\u0443 \u0441\u043B\u0435\u0432\u0430"
+  m_text: With the help of green eyes, you can improve the Wheel of Chaos.  For 2
+    eyes - one-eyed sector For 3 eyes - two-eyed sector For 4 eyes - three-eyed sector 
+    Fill in the green bar on the left side.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
@@ -6458,6 +6494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8116695988205417861}
+  - component: {fileID: 3910950604511445667}
   - component: {fileID: 2073761768205835294}
   - component: {fileID: 1448079374199012831}
   - component: {fileID: 7352543646388849294}
@@ -6487,6 +6524,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3910950604511445667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107375606648426697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1448079374199012831}
+  maintainTextAlignment: 1
+  key: Tooltip_sector_blue
+  afterKeyValue: 
 --- !u!222 &2073761768205835294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6515,13 +6568,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u0441\u0438\u043D\u0438\u0445
-    \u0433\u043B\u0430\u0437 \u043C\u043E\u0436\u043D\u043E \u0437\u0430\u0442\u043E\u0440\u043C\u043E\u0437\u0438\u0442\u044C
-    \u0440\u043E\u0441\u0442 \u0448\u043A\u0430\u043B\u044B \u043F\u043E\u043B\u0438\u0446\u0438\u0438.
-    \n\u041E\u0447\u0438\u0449\u0430\u044E\u0442 \u0441\u0438\u043D\u044E\u044E \u0448\u043A\u0430\u043B\u0443
-    \u0441\u043B\u0435\u0432\u0430. \n\n\u041F\u0440\u0438 \u0432\u044B\u0431\u043E\u0440\u0435
-    \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0441\u0435\u043A\u0442\u043E\u0440\u043E\u0432
-    \u043F\u043E\u043B\u0443\u0447\u0430\u044E\u0442 \u0431\u043E\u043D\u0443\u0441"
+  m_text: With the help of blue eyes, you can slow down the growth of the police
+    scale. Reduce the blue bar on the left side.  Receive a bonus, when activate
+    multiple sectors
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
@@ -8706,6 +8755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4037982673703645885}
+  - component: {fileID: 2974114893235985731}
   - component: {fileID: 2352579924322389972}
   - component: {fileID: 8707208055264860940}
   - component: {fileID: 4896412092679286987}
@@ -8735,6 +8785,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2974114893235985731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260766766798244157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27798c389c988da48b345a899559ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 8707208055264860940}
+  maintainTextAlignment: 1
+  key: Tooltip_sector_red
+  afterKeyValue: 
 --- !u!222 &2352579924322389972
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8763,13 +8829,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u043A\u0440\u0430\u0441\u043D\u044B\u0445
-    \u0433\u043B\u0430\u0437 \u043C\u043E\u0436\u043D\u043E \u043F\u0440\u0438\u0437\u0432\u0430\u0442\u044C
-    \u0434\u0440\u0435\u0432\u043D\u0435\u0433\u043E \u0431\u043E\u0433\u0430. \n\u0417\u0430\u043F\u043E\u043B\u043D\u044F\u044E\u0442
-    \u043A\u0440\u0430\u0441\u043D\u0443\u044E \u0448\u043A\u0430\u043B\u0443 \u0441\u043F\u0440\u0430\u0432\u0430.
-    \n\n\u041F\u0440\u0438 \u0432\u044B\u0431\u043E\u0440\u0435 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445
-    \u0441\u0435\u043A\u0442\u043E\u0440\u043E\u0432 \u043F\u043E\u043B\u0443\u0447\u0430\u044E\u0442
-    \u0431\u043E\u043D\u0443\u0441"
+  m_text: With the help of red eyes, you can summon an ancient god. Fill in the red
+    bar on the right side.  Receive a bonus, when activate multiple sectors
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
   m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,

@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(UIEvents))]
 public class ShowMouseTooltip : MonoBehaviour {
 	[Header("Audio"), Space]
-	[SerializeField] [Multiline(10)] string text;
+	[SerializeField] string textKey;
+	string text;
 
 	[Header("Refs"), Space]
 	[SerializeField] UIEvents events;
@@ -26,6 +27,10 @@ public class ShowMouseTooltip : MonoBehaviour {
 		}
 	}
 #endif
+
+	private void Awake() {
+		text = Polyglot.Localization.Get(textKey);
+	}
 
 	public void UpdateText(string newText) {
 		text = newText;

@@ -51,7 +51,7 @@ public class Game : MonoBehaviour {
 	[SerializeField] ProgressBar progressBarLoseGrow;
 	[Space]
 	[SerializeField] ShowMouseTooltip defeatBarTooltip;
-	[SerializeField] [Multiline(3)] string defeatBarTooltipText;
+	[SerializeField] [Multiline(3)] string defeatBarTooltipTextKey;
 	[Space]
 	[SerializeField] Animator tentacle1;
 	[SerializeField] Animator tentacle2;
@@ -113,7 +113,7 @@ public class Game : MonoBehaviour {
 		statLoseGrowPerTurn = loseGrowPerTurn;
 		statTurnsToIncreaseGrow = 0;
 
-		defeatBarTooltip.UpdateText(defeatBarTooltipText.Replace("{num}", statLoseGrowPerTurn.ToString()));
+		defeatBarTooltip.UpdateText(Polyglot.Localization.Get(defeatBarTooltipTextKey).Replace("{num}", statLoseGrowPerTurn.ToString()));
 
 		isGroupSelectionShowed = false;
 
@@ -429,7 +429,7 @@ public class Game : MonoBehaviour {
 			blueBarRise?.Invoke();
 			statTurnsToIncreaseGrow = 0;
 			++statLoseGrowPerTurn;
-			defeatBarTooltip.UpdateText(defeatBarTooltipText.Replace("{num}", statLoseGrowPerTurn.ToString()));
+			defeatBarTooltip.UpdateText(Polyglot.Localization.Get(defeatBarTooltipTextKey).Replace("{num}", statLoseGrowPerTurn.ToString()));
 		}
 
 		if (statLose >= pointToLose) {

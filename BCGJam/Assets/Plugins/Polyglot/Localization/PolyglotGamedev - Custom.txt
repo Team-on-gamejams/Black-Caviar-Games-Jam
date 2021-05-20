@@ -4,4 +4,29 @@ LANGUAGE_EN	[LanguageName] in english	English	French	Spanish	German	Italian 	Por
 LANGUAGE_DIRECTION	ltr or rtl (text direction used by game code)	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	ltr	rtl	rtl	ltr
 LANGUAGE_CODE_SHORT	Used by google translate	en	fr	es	de	it	pt	pt	ru	el	tr	da	no	sv	nl	pl	fi	ja	zh	zh	ko	cs	hu	ro	th	bg	he	ar	bs
 Polyglot	100																												
-MENU_IO_RESET	Reset control bindibng	Reset	Réinitialiser	Reiniciar	Reset	Ripristina	Redefinir	Redefinir	Сброс	Επαναφορά	Sıfırla	Nulstil	Nullstille	Återställa	Reset	Resetowanie	Nollaa	リセット	重启	重启	초기화	Reset	Visszaállítás	Resetați	ตั้งค่าใหม่	Нулиране	אִתחוּל	إعادة تعيين	Resetovati
+MENU_IO_RESET	Reset control bindibng	Reset	Réinitialiser	Reiniciar	Reset	Ripristina	Redefinir	Redefinir	Сброс настроек	Επαναφορά	Sıfırla	Nulstil	Nullstille	Återställa	Reset	Resetowanie	Nollaa	リセット	重启	重启	초기화	Reset	Visszaállítás	Resetați	ตั้งค่าใหม่	Нулиране	אִתחוּל	إعادة ضبط	Resetovati
+																													
+Lose_header		Secret society arrested!\n You did't manage to summon the ancient Gods 							Тайное общество арестовано!\n Вы не успели призвать древних Богов																				
+Lose_bottom		You lose!							Поражение																				
+																													
+Button_again		Again							Еще раз																				
+Button_exit		Exit							Выход																				
+																													
+Win_header		The ancient God has been summoned!							Древний бог призван!																				
+Win_bottom		You win!							Победа!																				
+																													
+Popup_chooseNewSector_skip		Skip							Отмена																				
+Popup_chooseNewSector_header		Choose new sector							Выбери новый сектор																				
+																													
+Tooltip_sector_green		With the help of green eyes, you can improve the Wheel of Chaos.\n\n  For 2 eyes - one-eyed sector\n For 3 eyes - two-eyed sector\n For 4 eyes - three-eyed sector\n\n  Fill in the green bar on the left side.							С помощью зеленых глаз можно улучшить колесо Хаоса. \n\n  За 2 глаза - одноглазый сектор\n За 3 глаза - двухглазый сектор\n За 4 глаза - трехглазый сектор\n\n  Заполняют зеленую шкалу слева																				
+Tooltip_sector_blue		With the help of blue eyes, you can slow down the growth of the police scale. Reduce the blue bar on the left side.  Receive a bonus, when activate multiple sectors							С помощью синих глаз можно затормозить рост шкалы полиции. \n Очищают синюю шкалу слева. \n\n  При выборе нескольких секторов получают бонус																				
+Tooltip_sector_yellow		You can make a combo with the help of yellow eyes. Gives an opportunity to activate all 6 sectors at a time  Fill in the yellow scale on the right.							С помощью желтых глаз можно собрать комбо. У вас появляется возможность использовать все 6 секторов за раз\n\n  Заполняют желтую шкалу справа.  																				
+Tooltip_sector_red		With the help of red eyes, you can summon an ancient god.\n Fill in the red bar on the right side.\n\n  Receive a bonus, when activate multiple sectors							С помощью красных глаз можно призвать древнего бога. \n Заполняют красную шкалу справа. \n\n  При выборе нескольких секторов получают бонус																				
+Tooltip_sector_empty		Empty sector\n\n  Can be replaced when green eyes bar grows							Пустой сектор\n\n  Может быть заменен при помощи зеленых глаз																				
+																													
+																													
+Tooltip_bar_Upgrade		You will be caught by the police if this bar fills up.\n\n  Grows by {num} every turn. The growth rate depends on the time in the game.							Вас поймает полиция, если эта шкала заполнится до максимума.\n\n  Растет на {num} каждый ход. Скорость роста зависит от времени в игре.																				
+Tooltip_bar_Combo		Collect 5 yellow eyes to activate all six sectors							Наберете 5 желтых глаз, чтобы появилась возможность активировать все шесть секторов																				
+Tooltip_bar_loseGrow		Increases the growth rate of the police bar by +1 when full							Увеличивает скорость роста шкалы полиции. +1 к скорости, когда заполняется																				
+Tooltip_bar_lose		For green eyes, you will receive a new sector.\n For 2 eyes - one-eyed sector\n For 3 eyes - two-eyed sector\n For 4 eyes - three-eyed sector\n\n  Cleans every turn							За зеленые глаза вы получите новый сектор.\n За 2 глаза - одноглазый сектор\n За 3 глаза - двухглазый сектор\n За 4 глаза - трехглазый сектор\n\n  Очищается каждый ход																				
+Tooltip_bar_win		To summon the ancient god and win, you need to fill this bar							Чтобы призвать древнего бога и выиграть, нужно заполнить эту шкалу до конца																				

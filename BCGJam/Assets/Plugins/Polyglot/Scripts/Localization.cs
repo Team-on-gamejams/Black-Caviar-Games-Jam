@@ -347,7 +347,7 @@ namespace Polyglot
         /// <returns>A localized string</returns>
         public static string Get(string key)
         {
-            return Get(key, Instance.selectedLanguage);
+            return Get(key, Instance.selectedLanguage).Replace("\\n", "\n");
         }
 
         public static string Get(string key, Language language)
