@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TemplateGameManager
   m_EditorClassIdentifier: 
   startResources: 
-  buildNameString: 0.1 - Jam edition (5/20/2021)
+  buildNameString: 0.1 - Jam edition (5/21/2021)
   productName: Wheel of Chaos
   uiinput: {fileID: 0}
   eventSystem: {fileID: 0}

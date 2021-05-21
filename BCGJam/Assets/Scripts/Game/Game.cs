@@ -122,7 +122,7 @@ public class Game : MonoBehaviour {
 
 	void UseGroup1() {
 		onMouseClickGroup1?.Invoke();
-	
+
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 		circle.AnimateSectorsGroupsForCombo(false);
@@ -145,7 +145,7 @@ public class Game : MonoBehaviour {
 
 	void UseGroup2() {
 		onMouseClickGroup2?.Invoke();
-		
+
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
 		circle.AnimateSectorsGroupsForCombo(false);
@@ -168,7 +168,7 @@ public class Game : MonoBehaviour {
 
 	void UseGroupBoth() {
 		onMouseClickGroupBoth?.Invoke();
-		
+
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 
@@ -196,7 +196,7 @@ public class Game : MonoBehaviour {
 	#region Mouse over Callbacks
 	public void OnMouseOverGroup1() {
 		onMouseOverGroup1?.Invoke();
-		
+
 		circle.AnimateArrowsGroup1();
 		circle.AnimateSectorsGroup1();
 
@@ -204,7 +204,7 @@ public class Game : MonoBehaviour {
 
 		circle.GetGroup1Modifiers(out int redMod, out int yellowMod, out int blueMod, out int greenMod, out int redCount, out int blueCount, statMultiplierFor2Plus);
 
-		if(blueCount > 1) {
+		if (blueCount > 1) {
 			int bonusValue = Mathf.RoundToInt((blueCount - 1) * statMultiplierFor2Plus);
 			int origValue = blueMod - bonusValue;
 
@@ -233,7 +233,7 @@ public class Game : MonoBehaviour {
 
 	public void OnMouseOverGroup2() {
 		onMouseOverGroup2?.Invoke();
-		
+
 		circle.AnimateArrowsGroup2();
 		circle.AnimateSectorsGroup2();
 		circle.AnimateSectorsGroupsForCombo(false);
@@ -269,7 +269,7 @@ public class Game : MonoBehaviour {
 
 	public void OnMouseOverGroupBoth() {
 		onMouseOverGroupBoth?.Invoke();
-		
+
 		circle.AnimateArrowsGroup1();
 		circle.AnimateArrowsGroup2();
 
@@ -365,27 +365,26 @@ public class Game : MonoBehaviour {
 
 	#region Button Callbacks
 	public void OnClickSpin() {
-		onMouseClickEye?.Invoke();
-		onSpinStart?.Invoke();
-
 		buttonSpin.interactable = false;
-
 		filledBars = 0;
 
 		LeanTween.delayedCall(gameObject, Time.smoothDeltaTime, () => {
 			LeanTween.delayedCall(
 				gameObject,
-				(tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f ? 0 : tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime * 0.5f) + 0.1f, 
+				(tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f ? 0 : (1.0f - tentacle1.GetCurrentAnimatorStateInfo(0).normalizedTime) * 0.5f) + 0.1f,
 				() => {
-				tentacle1.SetTrigger("IsSpin");
-				tentacle2.SetTrigger("IsSpin");
-				tentacle1.SetBool("IsGrab", false);
-				tentacle2.SetBool("IsGrab", false);
+					onMouseClickEye?.Invoke();
+					onSpinStart?.Invoke();
 
-				LeanTween.delayedCall(gameObject, Time.smoothDeltaTime, () => {
-					circle.Spin();
+					tentacle1.SetTrigger("IsSpin");
+					tentacle2.SetTrigger("IsSpin");
+					tentacle1.SetBool("IsGrab", false);
+					tentacle2.SetBool("IsGrab", false);
+
+					LeanTween.delayedCall(gameObject, Time.smoothDeltaTime, () => {
+						circle.Spin();
+					});
 				});
-			});
 		});
 	}
 
@@ -425,7 +424,7 @@ public class Game : MonoBehaviour {
 		statLose += statLoseGrowPerTurn;
 
 		++statTurnsToIncreaseGrow;
-		if(statTurnsToIncreaseGrow > turnsToIncreaseGrow) {
+		if (statTurnsToIncreaseGrow > turnsToIncreaseGrow) {
 			blueBarRise?.Invoke();
 			statTurnsToIncreaseGrow = 0;
 			++statLoseGrowPerTurn;
@@ -446,7 +445,7 @@ public class Game : MonoBehaviour {
 			statCombo = 0;
 		}
 
-		if(lastGreenMod > pointToMaxUpgrade) {
+		if (lastGreenMod > pointToMaxUpgrade) {
 			lastGreenMod = pointToMaxUpgrade;
 		}
 
@@ -557,7 +556,7 @@ public class Game : MonoBehaviour {
 	void OnSingleBarFill() {
 		++filledBars;
 
-		if(filledBars == 5) {
+		if (filledBars == 5) {
 			OnAllEffectAnimationDone();
 		}
 	}
@@ -569,7 +568,7 @@ public class Game : MonoBehaviour {
 	void StartSelectSectorForUpgrade() {
 		circle.StartCatchUpgradeInput();
 	}
-	
+
 	public void EndSelectSectorForUpgrade(int id) {
 		circle.StopCatchUpgradeInput();
 
