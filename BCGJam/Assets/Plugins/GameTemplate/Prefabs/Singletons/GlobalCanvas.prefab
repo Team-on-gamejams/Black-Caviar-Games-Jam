@@ -170,8 +170,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press any key to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
+  m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -829,8 +830,9 @@ MonoBehaviour:
   m_text: You can set loading tips in [GlobalCanvas/Loading image] prefab. Or disable
     them
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef, type: 2}
+  m_sharedMaterial: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -854,7 +856,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 33.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1051,6 +1053,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003782969924386332, guid: 9deeff3b756d5044a868410ab52a4bab,
         type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 243cc7eca2cbfd04989a209ad46d51ef,
+        type: 2}
+    - target: {fileID: 2003782969924386332, guid: 9deeff3b756d5044a868410ab52a4bab,
+        type: 3}
       propertyPath: m_fontColor.b
       value: 0.23529412
       objectReference: {fileID: 0}
@@ -1069,6 +1077,12 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2003782969924386332, guid: 9deeff3b756d5044a868410ab52a4bab,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6662203118276233149, guid: 243cc7eca2cbfd04989a209ad46d51ef,
+        type: 2}
     - target: {fileID: 2003782969924386332, guid: 9deeff3b756d5044a868410ab52a4bab,
         type: 3}
       propertyPath: m_fontColor32.rgba
